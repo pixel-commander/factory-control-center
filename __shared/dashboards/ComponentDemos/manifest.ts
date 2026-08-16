@@ -28,7 +28,7 @@ import ButtonOutlined from '../../atoms/buttons/button-outlined/demo/Demo'
 import SiteNavButton from '../../atoms/buttons/site-nav-button/demo/Demo'
 import TabNavButton from '../../atoms/buttons/tab-nav-button/demo/Demo'
 
-import StatelessForm from '../../components/StatelessFormV3/demo/Demo'
+import StatelessForm from '../../components/StatelessForm/demo/Demo'
 import Ide from '../../components/Ide/demo/Demo'
 
 export interface DemoProps {
