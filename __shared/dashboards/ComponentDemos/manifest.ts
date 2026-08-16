@@ -29,6 +29,7 @@ import SiteNavButton from '../../atoms/buttons/site-nav-button/demo/Demo'
 import TabNavButton from '../../atoms/buttons/tab-nav-button/demo/Demo'
 
 import StatelessForm from '../../components/StatelessFormV3/demo/Demo'
+import Ide from '../../components/Ide/demo/Demo'
 
 export interface DemoProps {
     name?: string,
@@ -96,4 +97,6 @@ export const ATOMS: DemoProps[] = [{
 
 export const COMPONENTS: DemoProps[] = [{
     name: 'StatelessForm', id: 'stateless-form', Demo: StatelessForm
+},{
+    name: 'Ide', id: 'ide', Demo: Ide
 }]

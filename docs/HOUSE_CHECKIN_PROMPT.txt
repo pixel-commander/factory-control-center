@@ -1,0 +1,17 @@
+House check-in:
+
+Re-read READ_THIS_FIRST.txt (RULES_AND_SKILLS in PATHS.txt) every 60 minutes or after any major work block.
+
+Then confirm the house system before continuing:
+- CSS Grid only, no Flexbox
+- no inline style props
+- reuse existing classes before creating new ones
+- if a new class is required, keep it in the owning component or page CSS file only
+- use grid.css and theme.css from HOUSE_CSS (per PATHS.txt)
+- use GLOBAL_TYPES as the source of truth
+- guard defs with ?: when values are not guaranteed
+- all state and routing through the house useURL hook (HOOKS in PATHS.txt)
+- do not invent props, tokens, helper classes, or generic templates
+- if it does not fit the repo system, ask for a new house-approved entry instead of inventing it
+
+Do not continue drifting. If you find drift, stop and correct it before moving on.

@@ -1,0 +1,8 @@
+﻿Use the app architecture pack.
+
+Plan the work around these principles:
+- Prefer URL-driven state for page/view selection.
+- Match house naming and folder structure.
+- Keep demos and registry patterns consistent.
+- Do not invent extra app-level patterns that bypass the repo design system.
+- If the feature requires a new house entry, ask for approval before implementing it.

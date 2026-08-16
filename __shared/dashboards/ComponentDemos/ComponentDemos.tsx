@@ -9,6 +9,7 @@ import { ContainerDemos } from './ContainerDemos'
 import StatelessFormDemo from '../../components/StatelessFormV3/demo/Demo'
 import CalendarDemo from '../../components/Calendar/demo/Demo'
 import RenderItemsDemo from '../../components/RenderItems/demo/Demo'
+import IdeDemo from '../../components/Ide/demo/Demo'
 
 /**
  * questions to ask:
@@ -43,6 +44,10 @@ const TABS = [{
   id: 'render-items',
   label: 'render items',
   path: 'render-items'
+},{
+  id: 'ide',
+  label: 'ide',
+  path: 'ide'
 }]
 
 // TabsNav OWNS THE URL; Nav just draws. It reads its own segment (`page`) and
@@ -83,7 +88,8 @@ const DEMOS: Record<string, () => React.JSX.Element> = {
   containers: ContainerDemos,
   'stateless-form': StatelessFormDemo,
   calendar: CalendarDemo,
-  'render-items': RenderItemsDemo
+  'render-items': RenderItemsDemo,
+  ide: IdeDemo
 }
 
 const Main = () => {

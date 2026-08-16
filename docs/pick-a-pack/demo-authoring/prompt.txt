@@ -1,0 +1,12 @@
+﻿Use the demo authoring pack.
+
+Create a real demo for the component that follows the house system and behaves like a working control.
+
+Requirements:
+- local demo UI state is allowed
+- no static placeholder markup
+- use the repo tokens and grid layout
+- maintain the component folder convention
+- export Demo and default Demo
+- use explicit props and local CSS only
+- no inline style props or generic stamping

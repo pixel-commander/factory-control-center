@@ -1,0 +1,3 @@
+Open the project root F:\factory-control-center and read PATHS.txt there FIRST - it is the only path authority. Then read READ_THIS_FIRST.txt in the RULES_AND_SKILLS folder it names, before doing any work.
+
+Follow the house system exactly: CSS Grid only, no Flexbox, no inline style, use grid.css and theme.css from HOUSE_CSS, use GLOBAL_TYPES for all prop and handler names, reuse existing classes first, and if a new class is needed put it in the owning component or page CSS file only. Do not invent props, tokens, shared utility classes, or generic templates. All state and routing goes through the house useURL hook (HOOKS in PATHS.txt). Guard defs with ?: when values are not guaranteed. If not approved by the house system, ask instead of inventing.

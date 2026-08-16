@@ -1,0 +1,157 @@
+﻿FACTORY CONTROL CENTER - FINAL RULES SUMMARY
+=========================================
+
+THIS IS THE HOUSE SYSTEM. FOLLOW IT OR DO NOT WORK.
+
+0. GROUND RULES (HOW WE WORK)
+-----------------------------
+- When writing ANY doc, prompt, or note: reference locations by their
+  PATHS.txt keys - NEVER hardcode a path. The only hardcoded path allowed
+  anywhere is the project root. Everything moves eventually; PATHS.txt is
+  the only thing that knows where things live today.
+- No comments in code. Anything that needs explaining goes in a README.txt
+  in the same folder as the file being worked on. Comments that already
+  exist are the owner's - never add or strip one; flag stale ones instead.
+- Every question asked of the owner, plus the answer, gets appended to the
+  QA_LOG file (per PATHS.txt). Append only - never overwrite.
+- Admit when unsure. Say "I don't know" plainly and ask. Never act on a
+  confident guess and never fill in blanks.
+- Human variable naming: plain words that match the function - "select"
+  not "pick", "item" not "row", "background" not "surface". The house
+  vocabulary wins a clash; flag non-human house names so they get fixed
+  together.
+- Reuse existing code first. No new classes or functions without the
+  owner's permission.
+
+1. CORE RULES
+-------------
+- Use CSS Grid only.
+- No Flexbox.
+- Use the canonical grid system from grid.css in HOUSE_CSS (per PATHS.txt).
+- Use tokens from theme.css in HOUSE_CSS.
+- Use atoms from ATOMS before custom CSS.
+- Reuse existing classes before creating any new class.
+- If a new class is truly necessary, it must live in the owning component or page CSS file.
+- Do not create new shared/global utility classes for one-off styling.
+- Do not use inline style props for visual design.
+- If the pattern is not already approved by the house system, ask for a new house entry instead of inventing it.
+
+2. TYPE RULES
+-------------
+- Always guard defs with ?: when values are not guaranteed.
+- Use GLOBAL_TYPES (per PATHS.txt) as the source of truth.
+- No invented prop names.
+- No invented handler names.
+- No prop spreading onto DOM elements.
+- Pass explicit props only.
+
+3. STATE RULES
+---------------
+- All state and routing goes through the house useURL hook (HOOKS in PATHS.txt).
+- Five closed verbs: update-path, set-path, update-var, update, remove-var; vars ride on '#'.
+- Never location.assign, raw pushState, or query-string state - useURL routes without reloads.
+- Demo-local state is okay only for demo-only UI behavior, not app state.
+
+4. STRUCTURE RULES
+------------------
+- .tsx = PascalCase
+- .css = kebab-case
+- functions = camelCase
+- component and dashboard folders = PascalCase (the stamps enforce this)
+- atom folders = kebab-case, organized by kind (containers, buttons)
+- component file names = PascalCase
+- Demo files must export Demo and default Demo.
+- Keep component structure consistent with the repo template pattern.
+
+5. FORBIDDEN PATTERNS
+---------------------
+- Flexbox
+- inline style={}
+- ad hoc custom classes in shared/global CSS
+- new shared helper files for local styling problems
+- custom grid templates outside HOUSE_CSS grid.css
+- generic stamping that ignores the house system
+- invented prop keys
+- invented tokens without approval
+- object spread onto DOM nodes
+- local state for real app navigation when URL state is the norm
+
+6. LOCAL CLASS RULE (THIS MATTERS)
+----------------------------------
+This is not optional.
+- Reuse existing class names before creating a new one.
+- If a new class is needed, it must live in the component or page CSS file that owns it.
+- Do not create new classes in a shared utility stylesheet.
+- Do not create a new global CSS file just to dodge local styling.
+- Do not create a helper file to centralize local class logic.
+
+7. DEFAULT DECISION ORDER
+-------------------------
+If there is uncertainty, do this in order:
+1. Reuse an existing class or atom.
+2. Use an approved grid utility.
+3. Use the house type vocabulary.
+4. Keep the new class local to the owning component or page CSS.
+5. Use URL-driven state.
+6. Ask for a new house entry instead of inventing custom behavior.
+
+8. REVIEW CHECK BEFORE FINISHING
+--------------------------------
+Before calling work done, check all of this:
+- No Flexbox
+- No inline style
+- Reused existing classes first
+- Any new class is in the owning component/page CSS
+- No shared/global class hack
+- No ad hoc token or prop invention
+- defs are guarded with ?:
+- URL-driven state used where appropriate
+- layout follows HOUSE_CSS grid.css
+- styling follows HOUSE_CSS theme.css
+
+9. SOURCE OF TRUTH
+------------------
+Read PATHS.txt in the project root FIRST. It is the only path authority.
+Never hardcode or guess a location - if PATHS.txt does not list what you
+need, stop and ask.
+
+The actual project references, by PATHS.txt key where registered:
+- GLOBAL_TYPES - the house vocabulary
+- HOUSE_CSS - grid.css (the grid system) and theme.css (the tokens)
+- ATOMS - the atom library, by kind (containers, buttons)
+- HOUSE_COMPONENTS, DASHBOARDS, PAGES, HOOKS - components, dashboards, pages, useURL
+- STAMP_NEW_COMPONENT / STAMP_NEW_ATOM / STAMP_NEW_DASHBOARD - the stamps
+- RULES_AND_SKILLS - this docs library
+
+10. What drift looks like
+------------------------
+The AI is drifting when it does any of the following:
+- creates a custom class in a shared file
+- invents CSS for a one-off fix instead of reusing the system
+- creates a generic template and stamps it everywhere
+- writes inline style to force a look
+- creates a new token or prop without approval
+- ignores the house naming and structure rules
+- treats skill files as a replacement for the actual rules
+
+11. IF A RULE IS BROKEN
+----------------------
+Stop.
+Fix it.
+Do not justify drift.
+Do not call it fine because it "mostly works."
+Do not excuse it as a small exception.
+If it does not fit the house system, ask.
+
+12. FINAL MANDATE
+-----------------
+The house system wins.
+Reusable patterns win.
+Local component/page CSS wins.
+System tokens win.
+No generic stamping.
+No drift.
+No random class creation.
+No shared/global class escapes.
+
+If the work does not fit the repo system, ask for the next house-approved entry instead of inventing one.

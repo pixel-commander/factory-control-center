@@ -1,0 +1,10 @@
+﻿Review the patch using the code review pack.
+
+Check for:
+- grid issues against grid.css in HOUSE_CSS (per PATHS.txt)
+- token misuse against theme.css in HOUSE_CSS
+- prop naming drift against GLOBAL_TYPES
+- guardless defs without ?:
+- forbidden patterns: Flexbox, inline style, custom layout classes, ad hoc tokens, invented props
+- generic stamping that ignores the house system
+Return only high-confidence issues and call out the exact file and fix direction.

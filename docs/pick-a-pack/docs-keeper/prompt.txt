@@ -1,0 +1,10 @@
+﻿Use the docs keeper pack.
+
+Refine or extend the documentation without duplicating rules or mixing unrelated concerns.
+
+Keep the docs:
+- modular
+- reusable
+- easy to combine into curated packs
+- aligned with the repo’s actual source-of-truth files
+- explicit about forbidden patterns and default decision order
