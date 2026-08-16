@@ -1,0 +1,41 @@
+# PATHS.txt — for Claude. Read this before any work in this project.
+# These are the only authoritative locations. If a location you need is not
+# listed here, stop and ask — never hunt for it or guess.
+
+PROJECT_ROOT: F:\factory-control-center
+
+QA_LOG: C:\code-qa\QA.txt
+# Every question asked of the user, plus their answer, gets appended here.
+# Dated [YYYY-MM-DD] Q:/A: entries. Append only — never overwrite.
+
+GLOBAL_TYPES: [PROJECT_ROOT]\RAB.types.ts
+# The house keys / global type definitions file. All props, handler names,
+# state keys, and component keys come from here. Never declare new types
+# or invent handler/class names outside this file.
+
+HOUSE_COMPONENTS: [PROJECT_ROOT]\__shared\components
+# The house components live here. This is the landing path for the
+# automation component stamp.
+
+DASHBOARDS: [PROJECT_ROOT]\__shared\dashboards
+# The dashboards live here. This is the landing path for the new
+# dashboard stamp.
+
+ATOMS: [PROJECT_ROOT]\__shared\atoms
+# The atoms live here. This is the landing path for the new atom stamp.
+
+HOOKS: [PROJECT_ROOT]\__shared\hooks
+# The house hooks live here. useURL is how all state and routing
+# management is done.
+
+COMPONENT_TEMPLATE: F:\__shared\templates\component
+# Default component scaffold template for new reusable UI pieces.
+
+STAMP_NEW_COMPONENT: F:\__shared\automation\ui\stamp-new-component
+# The new component stamp.
+
+STAMP_NEW_ATOM: F:\__shared\automation\ui\stamp-new-atom
+# The new atom stamp.
+
+STAMP_NEW_DASHBOARD: F:\__shared\automation\ui\stamp-new-dashboard
+# The new dashboard stamp.

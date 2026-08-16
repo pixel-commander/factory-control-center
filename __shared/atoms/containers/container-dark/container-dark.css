@@ -1,0 +1,13 @@
+:root {}
+
+/* base styles */
+.container-dark { }
+
+/** alt style for container-dark, used for alternate appearance of the container-dark */
+.container-dark--alt {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.container-dark[data-style='inset'] {}
+
+/* styles for float appearance: dropshadow/glow effects */
+.container-dark[data-style='float']::before {}

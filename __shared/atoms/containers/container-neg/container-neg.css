@@ -1,0 +1,13 @@
+:root {}
+
+/* base styles */
+.container-neg { }
+
+/** alt style for container-neg, used for alternate appearance of the container-neg */
+.container-neg--alt {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.container-neg[data-style='inset'] {}
+
+/* styles for float appearance: dropshadow/glow effects */
+.container-neg[data-style='float']::before {}

@@ -1,0 +1,13 @@
+:root {}
+
+/* base styles */
+.container-light { }
+
+/** alt style for container-light, used for alternate appearance of the container-light */
+.container-light--alt {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.container-light[data-style='inset'] {}
+
+/* styles for float appearance: dropshadow/glow effects */
+.container-light[data-style='float']::before {}
