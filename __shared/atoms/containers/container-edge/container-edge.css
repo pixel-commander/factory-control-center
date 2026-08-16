@@ -1,0 +1,31 @@
+:root {}
+
+/* base styles */
+.container-edge {
+  border-radius: var(--radius-lg);
+  border: 0;
+  border-left: var(--border-width-thick) solid var(--color-primary);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 40%);
+  box-shadow: none;
+}
+
+/** alt style for container-edge, used for alternate appearance of the container-edge */
+.container-edge.alt {}
+
+.container-edge.alt.inset {
+  box-shadow: inset 0 0 .875rem rgba(0, 0, 0, .7);
+}
+
+.container-edge.alt.float {
+  box-shadow: 0 .375rem .75rem rgba(0, 0, 0, .7);
+}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.container-edge.inset {
+  box-shadow: inset 0 0 .875rem rgba(0, 0, 0, .7);
+}
+
+/* styles for float appearance: dropshadow/glow effects */
+.container-edge.float {
+  box-shadow: 0 .375rem .75rem rgba(0, 0, 0, .7);
+}

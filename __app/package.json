@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "atoms": "node ../__shared/atoms/build-index.mjs",
+    "dev": "npm run atoms && vite",
+    "build": "npm run atoms && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"
   },

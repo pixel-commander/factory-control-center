@@ -4,10 +4,14 @@
 .container-light { }
 
 /** alt style for container-light, used for alternate appearance of the container-light */
-.container-light--alt {}
+.container-light.alt {}
 
 /* styles for inset appearance:  innershadow/glow effects */
-.container-light[data-style='inset'] {}
+.container-light.inset {
+  box-shadow: inset 0 0 .875rem rgba(0, 0, 0, .7);
+}
 
 /* styles for float appearance: dropshadow/glow effects */
-.container-light[data-style='float']::before {}
+.container-light.float {
+  box-shadow: 0 .375rem .75rem rgba(0, 0, 0, .7);
+}

@@ -1,0 +1,13 @@
+:root {}
+
+/* base styles */
+.site-nav-button { }
+
+/** alt style for site-nav-button, used for alternate appearance of the site-nav-button */
+.site-nav-button--alt {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.site-nav-button[data-style='inset'] {}
+
+/* styles for float appearance: dropshadow/glow effects */
+.site-nav-button[data-style='float']::before {}

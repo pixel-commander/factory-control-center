@@ -1,0 +1,16 @@
+/* STRUCTURE ONLY -- the tab-nav flavour of Nav.
+   Appearance belongs to the atoms handed in through container_class /
+   item_class. This file owns LAYOUT: how the items sit when Nav is a tab nav. */
+
+/* base styles */
+.tab-nav {
+   
+}
+.tab-nav .nav-item {
+   
+}
+
+/* stacked instead of in a row -- driven by the is_vertical prop */
+.tab-nav.is-vertical {
+   border-top-width: 0px
+}

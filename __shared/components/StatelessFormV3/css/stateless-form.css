@@ -1,0 +1,104 @@
+/* PADDING, FONT-SIZE, AND THE GRID. NOTHING ELSE (his call).
+ *
+ * No colour, no background, no border, no shadow, no radius -- those ride in on
+ * the atom classes: form_class, input_group_class, submit_class, cancel_class.
+ * This file only decides how big things are and where they sit.
+ *
+ * WHY THE HARD LINE: a rule here that sets `border` or `background` is TWO
+ * classes deep (.stateless-form-buttons .submit) against an atom's ONE
+ * (.button-solid), so it wins silently and the atom does nothing at all. That
+ * already happened once with the buttons. Keeping appearance out entirely means
+ * the fight cannot start.
+ *
+ * The one property that looks like appearance and is not: `display: none` on
+ * hidden tabs and the error message. That is layout -- whether a thing is in the
+ * flow, not what it looks like.
+ */
+
+.stateless-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--padding);
+  padding: var(--padding);
+}
+
+.stateless-form-message {
+  display: none;
+  font-size: var(--text-sm);
+}
+
+.stateless-form.has-errors .stateless-form-message {
+  display: block;
+}
+
+.stateless-form-fields,
+.stateless-form-tab-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--padding);
+}
+
+.stateless-form-children {
+  display: grid;
+  gap: var(--padding);
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--padding-xs);
+}
+
+.input-group-label {
+  font-size: var(--text-sm);
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  padding: var(--padding-xs) var(--padding-sm);
+  font-family: inherit;
+  font-size: var(--text-base);
+}
+
+.input-group textarea {
+  resize: vertical;
+}
+
+.input-group-message {
+  font-size: var(--text-xs);
+}
+
+.stateless-form-tabs {
+  display: grid;
+  gap: var(--padding);
+}
+
+.stateless-form-tabs-nav {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: var(--padding-xs);
+}
+
+.stateless-form-tab-name {
+  padding: var(--padding-xs) var(--padding-md);
+  font-family: inherit;
+  font-size: var(--text-base);
+}
+
+.stateless-form-tab.hidden {
+  display: none;
+}
+
+.stateless-form-buttons {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  gap: var(--padding-sm);
+}
+
+.stateless-form.view-mode .form-group-label {
+  font-size: var(--text-sm);
+}

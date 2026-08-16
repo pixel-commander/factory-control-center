@@ -14,7 +14,7 @@ export const SiteNav = ({
   container_class = 'site-nav',
   item_class = 'site-nav-item',
   selected,
-  handleClick,
+  handleClick
 }: SiteNavProps) => {
   className=`site-nav ${container_class} ${className || ''}`.trim()
   

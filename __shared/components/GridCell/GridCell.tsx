@@ -1,4 +1,6 @@
 import './css/grid-cell.css'
+import './css/grid-cell-main.css'
+
 import type { GridCellProps } from './GridCell.types'
 
 /**
@@ -14,9 +16,9 @@ export const GridCell = ({
   has_padding,
   children,
   container_ref,
-  cell_class
+  cell_class = 'grid-cell-main'
  }: GridCellProps) => {
-  className=`grid  ${className || ''} ${cell_class || ''}`.trim()
+  className=`grid-cell ${cell_class || ''} ${className || ''}`.trim()
 
   const cell_settings = {
     className: className,

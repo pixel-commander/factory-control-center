@@ -1,0 +1,135 @@
+== WRONG_ANSWERS -- fixes that looked right, cost time, and were not it. ==
+
+LOSSES.txt is the scars: bugs that shipped. This is the OTHER ledger -- the
+wrong DIAGNOSES. The hours here were not spent writing bad code, they were
+spent confidently fixing the wrong file. A wrong answer that gets discarded in
+ten seconds is free. One that survives a whole turn because it sounded
+plausible is what this file is for.
+
+Rule for adding one: write the wrong answer FIRST, then why it was believable,
+then what it actually was. If you cannot say why it was believable, you have
+not finished understanding the bug.
+
+STANDING ORDER (his 2026-08-16): EVERY TIME I TELL HIM HE IS WRONG AND HE IS
+NOT, IT GETS WRITTEN HERE. Not just bad diagnoses -- bad CONTRADICTIONS. He
+does not have to ask for the entry and he does not have to win the argument
+first; the moment it turns out his read was right, I log it myself.
+
+  WHY THIS FILE AND NOT A NOTE TO MYSELF: "I was wrong" evaporates between
+  sessions. A file does not. And the pattern only becomes visible in AGGREGATE
+  -- one bad contradiction is a mistake, five in a row is a habit I cannot see
+  from inside a single turn.
+
+  WHAT COUNTS: I said his code was the problem and it was not. I said a feature
+  was missing that already existed. I called his description of the symptom
+  imprecise when it was exact. I "corrected" a term he was using correctly.
+  Contradicting him and being RIGHT is not an entry -- that is the job.
+
+  THE ASYMMETRY THAT MAKES THIS WORTH KEEPING: when he is wrong, he finds out
+  in seconds -- the code does not work. When I am wrong ABOUT him being wrong,
+  nobody finds out until he stops and re-argues it, and the cost lands entirely
+  on him. He pays for my false confidence in time. This file is the invoice.
+
+
+========================================================================
+2026-08-16 -- "IT'S APPENDING TO THE URL"
+========================================================================
+SYMPTOM  Clicking demo tabs grew the path instead of replacing the segment:
+         /demos -> /demos/containers -> /demos/containers/buttons -> ...
+
+WRONG ANSWER #1 -- "your component is writing the wrong segment"
+  The claim: TabsNav writes `view` (go('set-path',{view:...})) but reads
+  `page` (const [{page}] = useURL()), so it never sees what it wrote.
+  Fix the read, fix the bug.
+
+  WHY IT WAS BELIEVABLE: it is a REAL defect, sitting in plain sight, in the
+  file that was open, on the line under the cursor. It fully explains the
+  is-selected half of the symptom. Every fact in it is true.
+
+  WHY IT WAS WRONG: it does not explain APPENDING. A read/write mismatch makes
+  the highlight wrong; it cannot make the path GROW. The wrong answer accounted
+  for the symptom that was easy to see and quietly dropped the one that was
+  actually reported. Fixing it changed nothing about the reported bug.
+
+  THE TELL, and it was there before the edit: `applyPaths` was tested against
+  the three stated cases and PASSED all three. A hook whose truncation rule is
+  provably correct does not append. That result should have moved the search to
+  the OTHER two functions immediately, instead of being read as "hook is fine,
+  therefore component is guilty."
+
+WRONG ANSWER #2 -- "useURL is missing the update-only-this-segment feature"
+  The claim (his): the hook needs a new feature -- writing a segment should
+  clear the ones after it.
+
+  WHY IT WAS WRONG: that feature already existed and worked. `applyPaths` had
+  implemented exactly it since the beginning, comments and all. Building it
+  again would have produced a second copy of a correct rule and left the real
+  bug untouched.
+
+  WORTH SAYING: this wrong answer was still USEFUL. Testing it is what proved
+  applyPaths correct, which is what eventually cornered the real culprit. A
+  hypothesis that gets cleanly falsified earns its keep.
+
+THE ACTUAL ANSWER -- `.filter(Boolean)`, in BOTH directions
+  buildHref built the path with `.map(...).filter(Boolean)`, which drops EVERY
+  empty segment -- including one in the MIDDLE:
+
+    {main:'demos', page:'', view:'containers'}  ->  /demos/containers
+
+  parsePaths reads that straight back as page='containers', view=''. THE
+  SEGMENT MOVED UP A SLOT. The write silently relocated into a key nobody asked
+  for, and the `view` that was written vanished.
+
+  Then it compounds, and THAT is what looks like appending: the next click
+  writes `view` again, but `page` is now genuinely 'containers', so applyPaths
+  correctly keeps it and the path GROWS. Every click adds a segment. Nothing
+  errors. The url just crawls.
+
+  THE SECOND HALF, nearly missed: parsePaths had the SAME `.filter(Boolean)`.
+  Fixing only buildHref would have been a third wrong answer -- the read side
+  strips the interior empty right back out and undoes the write. Both halves
+  hold position or neither does.
+
+  THE FIX: buildHref trims only TRAILING empties; parsePaths strips only the
+  LEADING one. An interior hole survives as '' and holds its slot.
+
+THE COST, stated plainly: one wrong file edited, one turn spent, and the user
+had to say "the problem was not in my code" to redirect it.
+
+WHAT THE FILE-BLAME WAS REALLY MADE OF: the buggy line was ONE token long
+(`.filter(Boolean)`), in a 260-line file, wrapped in careful comments that made
+it read as deliberate. The component's bug was four visible characters of
+mismatch. Reaching for the legible bug over the invisible one is the whole
+failure mode -- and the invisible one was in the file with the comments
+explaining how right it was.
+
+
+========================================================================
+THE PATTERNS -- what these have in common
+========================================================================
+1. A TRUE FINDING IS NOT A DIAGNOSIS. `page` vs `view` was real, and fixing it
+   was correct, and it was not the bug. Before shipping a fix, say out loud
+   which symptom it explains -- and if any reported symptom is left over, you
+   are not done. "Appending" was never explained by that fix.
+
+2. PROVING ONE PART CORRECT DOES NOT ACQUIT THE FILE. applyPaths passing three
+   tests got read as "the hook works." Three functions shared that file and two
+   of them were broken. Test the function, not the module, and never let a
+   green result narrow the search to somewhere else entirely.
+
+3. POSITION IS MEANING; `filter` DESTROYS POSITION. Anywhere a slot's INDEX
+   carries meaning -- path segments, columns, fixed-arity args -- filtering
+   empties is a silent reindex of everything downstream. Trim ends; never
+   squeeze the middle.
+
+4. SYMMETRY IS PART OF THE FIX. A serialize/parse pair are one mechanism. Any
+   rule about empties, escaping, or order has to be written into both, and a
+   fix that touches only one direction round-trips to garbage. Test round-trip
+   (state -> url -> state), not just the forward pass -- that test is what
+   caught the parsePaths half here.
+
+5. "THE HOOK IS FINE" IS A CLAIM, AND IT NEEDS A TEST, NOT A READING. The
+   comments in useURL.ts are unusually good, and they are what made the file
+   feel already-audited. Good comments describe INTENT. The bug was in the
+   gap between intent and code, which is precisely the gap a comment cannot
+   show you.

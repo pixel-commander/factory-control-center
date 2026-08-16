@@ -1,3 +1,4 @@
 .grid-cell {
   gap: var(--padding-sm);
+  display: grid;
 }

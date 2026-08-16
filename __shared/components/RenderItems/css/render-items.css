@@ -1,0 +1,36 @@
+.render-items {
+  display: grid;
+  align-content: start;
+  gap: var(--padding-xs);
+  min-height: 0;
+  min-width: 0;
+}
+
+.render-items.is-horizontal {
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-content: stretch;
+}
+
+.render-item {
+  appearance: none;
+  display: grid;
+  align-items: center;
+  gap: var(--padding-xs);
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.render-item.is-row {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: var(--padding-sm);
+  padding: var(--padding-xs) var(--padding-sm);
+  font-size: var(--text-sm);
+}

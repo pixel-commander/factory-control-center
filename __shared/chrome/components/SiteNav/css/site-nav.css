@@ -1,3 +1,5 @@
-.site-nav {
-  gap: var(--padding-sm);
-}
+/* STRUCTURE ONLY.
+   The LOOK lives in the atom: atoms/containers/site-nav/site-nav.css, loaded
+   globally through atoms/imports.css. Nothing here, on purpose -- this file and
+   components/Nav/css/site-nav.css both used to style .site-nav, and two files
+   owning one selector is how a style ends up applied by whichever loaded last. */

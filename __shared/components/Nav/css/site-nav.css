@@ -1,0 +1,5 @@
+/* STRUCTURE ONLY -- the site-nav flavour of Nav.
+   The LOOK lives in the atom: atoms/containers/site-nav/site-nav.css, which is
+   loaded globally through atoms/imports.css. Nothing here, on purpose -- two
+   files owning one selector is how a style ends up applied by whichever happened
+   to load last. */

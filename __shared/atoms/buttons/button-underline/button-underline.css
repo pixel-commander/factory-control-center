@@ -1,0 +1,30 @@
+:root {}
+
+/* base styles */
+.button-underline {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  gap: var(--padding-xs);
+  padding: var(--padding) var(--padding-xl);
+  border-radius: 0;
+  border: none;
+  border-bottom: var(--border-width-thick) solid var(--color-primary);
+  background: none;
+  box-shadow: 0 .35rem .6rem -.35rem color-mix(in srgb, var(--color-primary) 55%, transparent);
+  color: var(--color-primary-lightest);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-md);
+  letter-spacing: .18em;
+  cursor: pointer;
+}
+
+.button-underline:hover {
+  filter: brightness(1.2);
+}
+
+.button-underline[data-disabled="true"] {
+  opacity: .45;
+  pointer-events: none;
+}
