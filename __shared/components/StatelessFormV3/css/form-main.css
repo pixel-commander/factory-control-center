@@ -1,0 +1,113 @@
+.form-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--padding);
+  color: var(--color-text);
+}
+
+.form-main .form-message {
+  display: none;
+  color: var(--color-error);
+  font-size: var(--text-sm);
+}
+
+.form-main .stateless-form-tabs-nav { padding: var(--padding-xs)}
+.form-main.has-errors .form-message {
+  display: block;
+}
+
+.form-main .form-fields,
+.form-main .form-tab-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--padding);
+}
+
+.form-main .form-children {
+  display: grid;
+  gap: var(--padding);
+}
+
+.form-main .form-tabs {
+  display: grid;
+  gap: var(--padding);
+}
+
+.form-main .form-tabs-nav {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: var(--padding-xs);
+}
+
+.form-main .form-tab-name {
+  padding: var(--padding-xs) var(--padding-md);
+  background: transparent;
+  color: var(--color-text-dim);
+  border: none;
+  border-bottom: var(--border-width) solid transparent;
+  font-family: inherit;
+  font-size: var(--text-base);
+  cursor: pointer;
+}
+
+.form-main .form-tab-name.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-primary);
+}
+
+.form-main .form-tab.hidden {
+  display: none;
+}
+
+.form-main .form-buttons {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  gap: var(--padding-sm);
+}
+
+.form-main .form-buttons .cancel,
+.form-main .form-buttons .submit {
+  padding: var(--padding-xs) var(--padding-xl);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--text-base);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-main .form-buttons .submit {
+  background: linear-gradient(180deg, var(--color-primary-lighter), var(--color-primary-darker));
+  color: var(--color-primary-darkest);
+  border: var(--border-width) solid var(--color-primary);
+  box-shadow:
+    0 0 1.2rem color-mix(in srgb, var(--color-primary) 50%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, .35);
+}
+
+.form-main .form-buttons .submit:active {
+  background: linear-gradient(180deg, var(--color-primary-darker), var(--color-primary-lighter));
+  box-shadow: var(--sink);
+}
+
+.form-main .form-buttons .cancel {
+  background: transparent;
+  color: var(--color-muted);
+  border: var(--border);
+}
+
+.form-main .form-buttons .cancel:hover {
+  color: var(--color-text);
+  border-color: var(--color-border-light);
+}
+
+.form-main.view-mode .form-group-label {
+  color: var(--color-text-dim);
+  font-size: var(--text-sm);
+}
+
+.form-main.view-mode .form-group-input {
+  color: var(--color-text);
+}

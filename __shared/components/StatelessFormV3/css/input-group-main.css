@@ -1,0 +1,57 @@
+.input-group-main {
+  display: grid;
+  gap: var(--padding-xs);
+  padding: var(--padding-sm);
+}
+
+.input-group-main .input-group-label {
+  color: var(--color-text-dim);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.input-group-main .red-star {
+  color: var(--color-error);
+  font-weight: bold;
+}
+
+.input-group-main input,
+.input-group-main textarea,
+.input-group-main select {
+  padding: var(--padding-xs) var(--padding-sm);
+  background: var(--bg-container-deep);
+  color: var(--color-text);
+  border: var(--border);
+  border-radius: var(--radius-xs);
+  font-family: inherit;
+  font-size: var(--text-base);
+}
+
+.input-group-main input:focus,
+.input-group-main textarea:focus,
+.input-group-main select:focus {
+  outline: none;
+  border-color: var(--color-border-light);
+}
+
+.input-group-main textarea {
+  resize: vertical;
+}
+
+.input-group-main .input-group-message {
+  color: var(--color-text-dim);
+  font-size: var(--text-xs);
+}
+
+.input-group-main.has-error input,
+.input-group-main.has-error textarea,
+.input-group-main.has-error select,
+.input-group-main.is-required input,
+.input-group-main.is-required textarea,
+.input-group-main.is-required select {
+  border-color: var(--color-error);
+}
+
+.input-group-main.has-error .input-group-message {
+  color: var(--color-error);
+}

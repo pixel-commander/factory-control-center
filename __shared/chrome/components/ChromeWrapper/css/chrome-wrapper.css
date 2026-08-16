@@ -1,0 +1,331 @@
+/* THE LIT MACHINE FRAME the app sits inside -- side rails with glowing tubes,
+ * ribbed top and bottom trim, glowing corner arcs, rivets.
+ *
+ * Carried from Desktop/neon-site-chrome/chrome-border.css, which was itself
+ * lifted out of rab-dashboard-v2's Chassis. Two things changed on the way in:
+ *
+ *   1. THE TOKENS ARE OURS. rgb(var(--primary)) triplets became color-mix on the
+ *      hex we already have, --surface-* became --bg-container-*, and so on. No
+ *      second palette to keep in step.
+ *
+ *   2. THE HARDWARE POSITIONS ARE DATA, not inline styles -- see js/hardware.ts.
+ *      The css states what a tube IS; the array states where each one sits.
+ *
+ * Effects are written literally, never through a token, same as the atoms.
+ */
+
+.chrome-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-areas: "body";
+  padding: 2.75rem 3.25rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  color: var(--color-muted);
+  background: linear-gradient(180deg, #1c212d 0%, #0d1018 4%, #090b11 96%, #181d29 100%);
+  box-shadow:
+    inset 0 0 0 1px var(--color-border-light),
+    inset 0 0 0 .1875rem var(--bg-container-deep),
+    inset 0 0 0 .25rem #262e3e,
+    inset 0 0 0 .375rem #05060a,
+    inset 0 0 0 .4375rem #1c2230,
+    inset 0 0 3.75rem rgba(0, 0, 0, .6);
+}
+
+/* undressed -- the frame with none of the hardware */
+.chrome-wrapper.no-rails {
+  padding: var(--padding-sm);
+}
+
+/* THE BODY SCROLLS, THE FRAME NEVER DOES. The wrapper is a fixed 100dvh with
+   overflow:hidden, so anything taller has to scroll HERE or it is simply cut off
+   behind the rails.
+   grid-template-rows: minmax(0, 1fr) is the load-bearing half: a grid row's
+   default minimum is its CONTENT, so without it the row grows to fit whatever is
+   inside and the overflow on this element never triggers. */
+.chrome-wrapper-body {
+  grid-area: body;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* ---- rivets --------------------------------------------------------------- */
+
+.chrome-wrapper-rivet {
+  position: absolute;
+  width: .4375rem;
+  height: .4375rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #535d73, #0c0f16);
+  box-shadow: inset 0 -1px 1px #000, 0 1px 1px rgba(255, 255, 255, .06);
+  pointer-events: none;
+}
+
+.chrome-wrapper-rivet.tl { top: 2.375rem; left: 2.875rem; }
+.chrome-wrapper-rivet.tr { top: 2.375rem; right: 2.875rem; }
+.chrome-wrapper-rivet.bl { bottom: 2.375rem; left: 2.875rem; }
+.chrome-wrapper-rivet.br { bottom: 2.375rem; right: 2.875rem; }
+
+/* ---- corner arcs ---------------------------------------------------------- */
+
+.chrome-wrapper-arc {
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  pointer-events: none;
+}
+
+/* left corners take primary, right corners secondary -- the frame is lit from
+   two sides and the arcs say which is which */
+.chrome-wrapper-arc.tl {
+  top: 1.0625rem;
+  left: 1.0625rem;
+  border-left: 5px solid var(--color-primary);
+  border-top: 5px solid var(--color-primary);
+  border-top-left-radius: 1.625rem;
+  filter:
+    drop-shadow(0 0 .3125rem var(--color-primary))
+    drop-shadow(0 0 1rem color-mix(in srgb, var(--color-primary) 55%, transparent));
+}
+
+.chrome-wrapper-arc.tr {
+  top: 1.0625rem;
+  right: 1.0625rem;
+  border-right: 5px solid var(--color-secondary);
+  border-top: 5px solid var(--color-secondary);
+  border-top-right-radius: 1.625rem;
+  filter:
+    drop-shadow(0 0 .3125rem var(--color-secondary))
+    drop-shadow(0 0 1rem color-mix(in srgb, var(--color-secondary) 55%, transparent));
+}
+
+.chrome-wrapper-arc.bl {
+  bottom: 1.0625rem;
+  left: 1.0625rem;
+  border-left: 5px solid var(--color-primary);
+  border-bottom: 5px solid var(--color-primary);
+  border-bottom-left-radius: 1.625rem;
+  filter:
+    drop-shadow(0 0 .3125rem var(--color-primary))
+    drop-shadow(0 0 1rem color-mix(in srgb, var(--color-primary) 55%, transparent));
+}
+
+.chrome-wrapper-arc.br {
+  bottom: 1.0625rem;
+  right: 1.0625rem;
+  border-right: 5px solid var(--color-secondary);
+  border-bottom: 5px solid var(--color-secondary);
+  border-bottom-right-radius: 1.625rem;
+  filter:
+    drop-shadow(0 0 .3125rem var(--color-secondary))
+    drop-shadow(0 0 1rem color-mix(in srgb, var(--color-secondary) 55%, transparent));
+}
+
+/* ---- rails ---------------------------------------------------------------- */
+
+.chrome-wrapper-rail {
+  position: absolute;
+  top: 4rem;
+  bottom: 4rem;
+  width: 1.75rem;
+  border-radius: .625rem;
+  box-shadow:
+    inset 0 0 0 1px var(--color-border-dark),
+    inset 0 .1875rem .625rem #000,
+    inset 0 -.1875rem .625rem #000;
+  pointer-events: none;
+}
+
+.chrome-wrapper-rail.left {
+  left: .5625rem;
+  background: linear-gradient(90deg, #232937 0%, #06070c 35%, #0a0d14 65%, #1e2431 100%);
+}
+
+.chrome-wrapper-rail.right {
+  right: .5625rem;
+  background: linear-gradient(270deg, #232937 0%, #06070c 35%, #0a0d14 65%, #1e2431 100%);
+}
+
+.chrome-wrapper-grain {
+  position: absolute;
+  inset: .125rem;
+  border-radius: var(--radius-lg);
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .028) 0 .125rem, transparent .125rem .5625rem);
+}
+
+/* ---- neon tubes ----------------------------------------------------------- */
+
+.chrome-wrapper-tube {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: .3125rem;
+  border-radius: var(--radius-xs);
+}
+
+.chrome-wrapper-tube.pink {
+  background: linear-gradient(180deg, #ff9ae8, var(--color-primary) 25%, var(--color-primary-darker));
+  box-shadow:
+    0 0 .375rem var(--color-primary),
+    0 0 1.125rem color-mix(in srgb, var(--color-primary) 75%, transparent),
+    0 0 2.5rem color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.chrome-wrapper-tube.cyan {
+  background: linear-gradient(180deg, #8fdcff, var(--color-secondary) 30%, var(--color-secondary-darker));
+  box-shadow:
+    0 0 .375rem var(--color-secondary),
+    0 0 1.125rem color-mix(in srgb, var(--color-secondary) 75%, transparent),
+    0 0 2.5rem color-mix(in srgb, var(--color-secondary) 35%, transparent);
+}
+
+/* ---- joints --------------------------------------------------------------- */
+
+.chrome-wrapper-joint {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.125rem;
+  height: 1.625rem;
+  border-radius: var(--radius-xs);
+  background: linear-gradient(180deg, var(--bg-container-raised), var(--bg-container-deep));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    inset 0 -.125rem .1875rem #000,
+    0 .125rem .3125rem #000;
+}
+
+.chrome-wrapper-joint::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: .3125rem;
+  height: .3125rem;
+  border-radius: 50%;
+  background: var(--bg-container-deep);
+  box-shadow: inset 0 1px .125rem #000;
+}
+
+/* ---- leds ----------------------------------------------------------------- */
+
+.chrome-wrapper-led {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: .25rem;
+  height: .25rem;
+  border-radius: 50%;
+}
+
+.chrome-wrapper-led.green {
+  background: var(--color-success);
+  box-shadow: 0 0 .375rem var(--color-success), 0 0 .875rem color-mix(in srgb, var(--color-success) 80%, transparent);
+}
+
+.chrome-wrapper-led.amber {
+  background: var(--color-warning);
+  box-shadow: 0 0 .375rem var(--color-warning), 0 0 .875rem color-mix(in srgb, var(--color-warning) 80%, transparent);
+}
+
+.chrome-wrapper-led.cyan {
+  background: var(--color-secondary);
+  box-shadow: 0 0 .375rem var(--color-secondary), 0 0 .875rem color-mix(in srgb, var(--color-secondary) 80%, transparent);
+}
+
+.chrome-wrapper-led.pink {
+  background: var(--color-primary);
+  box-shadow: 0 0 .375rem var(--color-primary), 0 0 .875rem color-mix(in srgb, var(--color-primary) 80%, transparent);
+}
+
+/* ---- trim ----------------------------------------------------------------- */
+
+.chrome-wrapper-trim {
+  position: absolute;
+  left: 4.375rem;
+  right: 4.375rem;
+  height: 1.25rem;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 0 0 1px var(--color-border-dark),
+    inset .1875rem 0 .625rem #000,
+    inset -.1875rem 0 .625rem #000;
+  pointer-events: none;
+}
+
+.chrome-wrapper-trim.top {
+  top: .5625rem;
+  background: linear-gradient(180deg, #1e2431, #07080d 45%, #12151e);
+}
+
+.chrome-wrapper-trim.bottom {
+  bottom: .5625rem;
+  background: linear-gradient(0deg, #1e2431, #07080d 45%, #12151e);
+}
+
+.chrome-wrapper-trim-grain {
+  position: absolute;
+  inset: .125rem;
+  border-radius: var(--radius-xs);
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .028) 0 .125rem, transparent .125rem .6875rem);
+}
+
+.chrome-wrapper-trim-tube {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: .3125rem;
+  border-radius: var(--radius-xs);
+}
+
+.chrome-wrapper-trim-tube.pink {
+  background: linear-gradient(90deg, var(--color-primary-darker), var(--color-primary), #ff9ae8);
+  box-shadow: 0 0 .375rem var(--color-primary), 0 0 1.125rem color-mix(in srgb, var(--color-primary) 70%, transparent);
+}
+
+.chrome-wrapper-trim-tube.cyan {
+  background: linear-gradient(90deg, #8fdcff, var(--color-secondary), var(--color-secondary-darker));
+  box-shadow: 0 0 .375rem var(--color-secondary), 0 0 1.125rem color-mix(in srgb, var(--color-secondary) 70%, transparent);
+}
+
+.chrome-wrapper-trim-block {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.625rem;
+  height: .875rem;
+  border-radius: var(--radius-xs);
+  background: linear-gradient(180deg, var(--bg-container-raised), var(--bg-container-deep));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 .125rem .25rem #000;
+}
+
+/* ---- animation ------------------------------------------------------------ */
+
+@keyframes chrome-wrapper-breathe {
+  0%, 100% { opacity: .82; }
+  50% { opacity: 1; }
+}
+
+@keyframes chrome-wrapper-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .25; }
+}
+
+.chrome-wrapper-tube.breathes {
+  animation: chrome-wrapper-breathe 3.2s ease-in-out infinite;
+}
+
+.chrome-wrapper-led.blinks {
+  animation: chrome-wrapper-blink 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chrome-wrapper-tube.breathes,
+  .chrome-wrapper-led.blinks {
+    animation: none;
+  }
+}

@@ -1,0 +1,25 @@
+/* STRUCTURE ONLY. Appearance belongs to the atoms handed in through
+   container_class / item_class -- container-main, tab-nav-button, site-nav-button.
+   Nav owns the LAYOUT (how the items sit); the atoms own the LOOK. */
+
+/* base styles */
+.nav {
+   border-style: solid;
+   border-color: var(--color-border);
+   border-width: 1px;
+}
+.nav .nav-item { 
+   padding: var(--padding-xs);
+   border-style: solid;
+   border-color: var(--color-border);
+   border-width: 1px 0 0 0;
+}
+
+/* stacked instead of in a row -- driven by the is_vertical prop */
+.nav.is-vertival {
+   
+}
+.nav.is-vertical .nav-item {
+   display: block;
+   width: 100%;
+}

@@ -1,0 +1,13 @@
+:root {}
+
+/* base styles */
+.tab-nav-button { }
+
+/** alt style for tab-nav-button, used for alternate appearance of the tab-nav-button */
+.tab-nav-button--alt {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.tab-nav-button[data-style='inset'] {}
+
+/* styles for float appearance: dropshadow/glow effects */
+.tab-nav-button[data-style='float']::before {}

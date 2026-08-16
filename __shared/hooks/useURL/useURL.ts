@@ -62,8 +62,18 @@ const VAR_DELIMS = /[?#$]/;
 
 const templateKeys = (template: string): string[] => template.split('/').filter(Boolean);
 
+// THE READ SIDE OF THE SAME RULE -- see buildHref. This also used to say
+// `.filter(Boolean)`, which strips an interior empty right back out and undoes
+// everything buildHref just did: '/demos//containers' would collapse to
+// ['demos','containers'] and land 'containers' in `page` again. Both halves have
+// to hold position or neither does.
+//
+// Only the LEADING empty comes off (every pathname starts with '/', so split
+// always yields a '' first). Interior empties are real segments and stay;
+// trailing ones are absent and `|| ''` covers them.
 const parsePaths = (template: string, pathname: string): Record<string, string> => {
-  const segments = (pathname || '').split('/').filter(Boolean);
+  const raw = (pathname || '').split('/');
+  const segments = raw[0] === '' ? raw.slice(1) : raw;
   const out: Record<string, string> = {};
   templateKeys(template).forEach((key, i) => { out[key] = segments[i] || ''; });
   return out;
@@ -82,8 +92,39 @@ const parseVars = (href: string): UrlVars => {
   return out;
 };
 
+// POSITION IS MEANING, SO A HOLE CANNOT BE SQUEEZED OUT (his call 2026-08-16 --
+// "it's appending to the url").
+//
+// THE BUG THIS FIXES, exactly: this line used to be `.filter(Boolean)`, which
+// drops EVERY empty segment -- including one in the MIDDLE. Write `view` while
+// `page` is still empty and the hole closes up:
+//
+//   {main:'demos', page:'', view:'containers'}  ->  /demos/containers
+//
+// which parsePaths reads straight back as page='containers', view=''. The
+// segment MOVED UP A SLOT. The write was silently relocated into a key nobody
+// asked for, and the `view` that was written is simply gone.
+//
+// Then it compounds, which is the part that looks like "appending": the next
+// click writes `view` again, but `page` is now genuinely 'containers', so
+// applyPaths keeps it and the path GROWS -- /demos/containers/buttons -- instead
+// of replacing. Every click adds a segment. Nothing errors; the url just crawls.
+//
+// SO ONLY TRAILING EMPTIES COME OFF. An interior hole stays as an empty string
+// and survives the join, holding its slot so every later segment keeps its own:
+//
+//   {main:'demos', page:'', view:'containers'}  ->  /demos//containers
+//
+// The double slash is LOAD-BEARING, not a cosmetic slip -- it is the empty
+// `page`, and parsePaths splits it back to view='containers'. Round-tripping a
+// state through the url and reading it again now returns what went in, which is
+// the property the old line broke.
 const buildHref = (template: string, paths: Record<string, string>, vars: UrlVars): string => {
-  const path = '/' + templateKeys(template).map(key => paths[key]).filter(Boolean).join('/');
+  const segments = templateKeys(template).map(key => paths[key] || '');
+  // trailing only: walk back past the empties at the END, keep everything before
+  let end = segments.length;
+  while (end > 0 && !segments[end - 1]) end -= 1;
+  const path = '/' + segments.slice(0, end).join('/');
   const var_keys = Object.keys(vars).filter(key => vars[key] !== '');
   // vars ride on '#' (his call): path#var=val, not path?var=val. Parsing (VAR_DELIMS)
   // still accepts ? # $ so any old ?-style link still reads; only the WRITE side emits '#'.

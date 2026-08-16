@@ -25,7 +25,7 @@ export interface ItemsAndDBRenderProps {
 }
 export interface HandlerProps {
     handleClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-
+    handleSort?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, props?: HouseKeyProps) => void;
     /** the value changed — the new value, not the event */
     handleChange?: (value: unknown) => unknown;
     /** commit what is held */

@@ -1,4 +1,167 @@
-.site-chrome {
+/* THE PAGE SHAPE, and the reason the reserved area words exist: header, left,
+ * main, right, footer are named regions, so any screen can be dropped into main
+ * without knowing what surrounds it.
+ *
+ * THE PAGE NEVER SCROLLS. The frame is 100dvh, header and footer are max-content,
+ * and body is the single 1fr row. Inside body, left and right are auto columns
+ * that scroll THEMSELVES and main is 1fr. That is the entire trick: no page
+ * scrollbar can exist, because no region is ever taller than its cell.
+ *
+ * Carried from rab-dashboard-v2 AppChrome. Layout and structure only -- colour
+ * and border live on the atoms handed in as *_class props.
+ */
+
+.chrome-wrapper {
     height: 100dvh;
     width: 100dvw;
+}
+
+.site-chrome {
+    display: grid;
+    grid-template-areas: "header" "body" "footer";
+    grid-template-rows: max-content minmax(0, 1fr) max-content;
+    gap: var(--padding-sm);
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+}
+
+/* ---- header --------------------------------------------------------------- */
+
+.site-chrome-header {
+    grid-area: header;
+    display: grid;
+    grid-template-areas: "brand nav badge";
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
+    align-items: center;
+    gap: var(--padding);
+    padding: var(--padding-sm);
+    min-width: 0;
+}
+
+.site-chrome-brand {
+    grid-area: brand;
+    display: grid;
+    align-content: center;
+    padding: var(--padding-xs) var(--padding-xl);
+}
+
+.site-chrome-wordmark {
+    font-weight: 700;
+    font-size: var(--text-md);
+    letter-spacing: .4em;
+    line-height: 1;
+}
+
+.site-chrome-version {
+    font-size: var(--text-xs);
+    letter-spacing: .22em;
+}
+
+.site-chrome-nav {
+    grid-area: nav;
+    min-width: 0;
+}
+
+.site-chrome-badge {
+    grid-area: badge;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    align-items: center;
+    gap: var(--padding-sm);
+}
+
+.site-chrome-avatar {
+    display: grid;
+    place-content: center;
+    width: 1.875rem;
+    height: 1.875rem;
+    font-weight: 700;
+    font-size: var(--text-xs);
+}
+
+/* ---- body ----------------------------------------------------------------- */
+
+/* AUTO, NOT max-content: the RAIL decides how wide it is from its own content and
+   main takes the rest. max-content lets the parent squeeze the child, which is
+   what shrinks a rail to a stub. */
+.site-chrome-body {
+    grid-area: body;
+    display: grid;
+    grid-template-areas: "left main right";
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--padding-sm);
+    min-height: 0;
+    min-width: 0;
+}
+
+/* THE GRID COLLAPSES TO THE RAILS THAT ACTUALLY EXIST, so a page with no right
+   rail does not leave a gutter where one would have been. */
+.site-chrome-body.rails-left {
+    grid-template-areas: "left main";
+    grid-template-columns: auto minmax(0, 1fr);
+}
+
+.site-chrome-body.rails-right {
+    grid-template-areas: "main right";
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.site-chrome-body.rails-none {
+    grid-template-areas: "main";
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.site-chrome-left {
+    grid-area: left;
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: start;
+    gap: var(--padding-sm);
+    padding: var(--padding-sm);
+    overflow-y: auto;
+    min-height: 0;
+}
+
+/* main declares no track of its own -- whatever it holds fills it.
+   IT SCROLLS ITSELF, like every other region: the page never scrolls, so a view
+   taller than its cell has to overflow here or it is simply cut off. */
+.site-chrome-main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    gap: var(--padding-sm);
+    overflow: auto;
+    min-height: 0;
+    min-width: 0;
+}
+
+.site-chrome-right {
+    grid-area: right;
+    display: grid;
+    min-height: 0;
+    min-width: 0;
+}
+
+/* ---- footer --------------------------------------------------------------- */
+
+.site-chrome-footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-areas: "note status";
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: center;
+    gap: var(--padding-lg);
+    padding: var(--padding-sm) var(--padding-lg);
+}
+
+.site-chrome-note {
+    grid-area: note;
+    font-size: var(--text-xs);
+}
+
+.site-chrome-status {
+    grid-area: status;
+    font-size: var(--text-xs);
 }

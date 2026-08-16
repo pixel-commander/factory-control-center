@@ -1,0 +1,29 @@
+:root {}
+
+/* base styles */
+.button-ghost {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  gap: var(--padding-xs);
+  padding: var(--padding) var(--padding-xl);
+  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--color-border-dark);
+  background: linear-gradient(180deg, var(--bg-container-main), var(--bg-container-deep));
+  box-shadow: var(--lift-soft);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-md);
+  letter-spacing: .18em;
+  cursor: pointer;
+}
+
+.button-ghost:hover {
+  filter: brightness(1.2);
+}
+
+.button-ghost[data-disabled="true"] {
+  opacity: .45;
+  pointer-events: none;
+}

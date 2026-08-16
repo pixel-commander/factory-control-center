@@ -1,0 +1,28 @@
+:root {}
+
+/* base styles */
+.container-ghost {
+  border-radius: var(--radius-lg);
+  border: var(--border);
+  background: rgba(255, 255, 255, .05);
+  backdrop-filter: brightness(1.25) saturate(1.2);
+  box-shadow: none;
+}
+
+/** alt style for container-ghost, used for alternate appearance of the container-ghost */
+.container-ghost.alt {
+  border-radius: var(--radius-lg);
+  border: var(--border);
+  background: rgba(255, 255, 255, .05);
+  backdrop-filter: brightness(1.25) saturate(1.2);
+  box-shadow: none;
+}
+
+.container-ghost.alt.inset {}
+.container-ghost.alt.float {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.container-ghost.inset {}
+
+/* styles for float appearance: dropshadow/glow effects */
+.container-ghost.float {}
