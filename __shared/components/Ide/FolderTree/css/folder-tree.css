@@ -1,0 +1,126 @@
+.ide-file-tree {
+  --tree-radius: 0.25rem;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--text-sm);
+}
+
+.ide-file-tree__head {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--pad-2xs) var(--pad-sm);
+  border-bottom: var(--border-width) var(--border-style) var(--color-border-dark);
+  font-size: var(--text-2xs);
+  letter-spacing: .08em;
+  color: var(--color-muted);
+}
+
+.ide-file-tree__count {
+  color: var(--color-text-dim);
+}
+
+.ide-file-tree__rows {
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
+  gap: 1px;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--pad-2xs);
+}
+
+.ide-file-tree .ide-row {
+  padding: var(--pad-3xs) var(--pad-xs);
+  border-radius: var(--tree-radius);
+}
+
+.ide-file-tree .ide-row:hover {
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+}
+
+.ide-file-tree .ide-row[data-selected="true"] {
+  box-shadow: none;
+  background: color-mix(in srgb, var(--ide-accent) 18%, transparent);
+  color: var(--color-text-strong);
+}
+
+.ide-file-tree__lead {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: var(--pad-2xs);
+}
+
+.ide-file-tree__rails {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--pad-md);
+  height: 1.4em;
+}
+
+.ide-file-tree__rail {
+  border-left: none;
+}
+
+.ide-file-tree__mark {
+  width: 1.2em;
+  text-align: center;
+  color: var(--color-text-dim);
+}
+
+.ide-file-tree__caret {
+  display: inline-grid;
+  place-items: center;
+  width: 1.2em;
+  color: var(--color-text-dim);
+  transition: transform var(--speed-fast) var(--ease-out);
+}
+
+.ide-file-tree__row.is-open .ide-file-tree__caret {
+  transform: rotate(0deg);
+}
+
+.ide-file-tree__row:not(.is-open) .ide-file-tree__caret {
+  transform: rotate(-90deg);
+}
+
+.ide-file-tree__row.is-folder .ide-file-tree__mark {
+  color: var(--color-warning);
+}
+
+.ide-file-tree__row.is-folder .ide-row__label {
+  color: var(--color-text);
+}
+
+.ide-file-tree__row.lang-tsx .ide-file-tree__mark {
+  color: var(--ide-secondary);
+}
+
+.ide-file-tree__row.lang-ts .ide-file-tree__mark {
+  color: var(--color-secondary-lighter);
+}
+
+.ide-file-tree__row.lang-json .ide-file-tree__mark {
+  color: var(--ide-bad);
+}
+
+.ide-file-tree__row.lang-css .ide-file-tree__mark {
+  color: var(--color-primary-lighter);
+}
+
+.ide-file-tree__row.lang-md .ide-file-tree__mark {
+  color: var(--ide-good);
+}
+
+.ide-file-tree__ext {
+  color: var(--color-text-dim);
+}
+
+.ide-file-tree__flag {
+  color: var(--ide-bad);
+  font-size: var(--text-2xs);
+}

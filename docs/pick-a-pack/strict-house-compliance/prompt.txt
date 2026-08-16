@@ -1,0 +1,13 @@
+﻿Use the strict house compliance pack.
+
+Treat this as a high-signal compliance pass. The work must satisfy the house rules before completion.
+
+Check all of the following:
+- grid only
+- no Flexbox
+- no inline visual styles
+- no custom classes or tokens
+- props and handlers follow the house vocabulary
+- definitions are guarded with ?:
+- no generic template dumping
+- if not approved, ask instead of inventing

@@ -1,0 +1,14 @@
+﻿Use the UI generation pack.
+
+Apply the following constraints:
+- CSS Grid only.
+- No Flexbox.
+- Use canonical grid utilities from grid.css in HOUSE_CSS (per PATHS.txt).
+- Use tokens from theme.css in HOUSE_CSS.
+- Use existing atoms and approved patterns before creating CSS.
+- No inline style props.
+- Guard defs with ?:.
+- Prefer project vocabulary from GLOBAL_TYPES.
+- Use the house useURL hook (HOOKS in PATHS.txt) for navigation/view selection.
+- Do not invent custom props, tokens, or layout patterns.
+- If it does not fit the house system, ask for a new approved entry instead.

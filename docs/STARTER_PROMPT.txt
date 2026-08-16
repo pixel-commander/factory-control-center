@@ -1,0 +1,40 @@
+Read this first:
+
+Open the project root F:\factory-control-center and read PATHS.txt - it is
+the only path authority. Then read READ_THIS_FIRST.txt in the
+RULES_AND_SKILLS folder it names.
+
+Then work off the house system in this project.
+
+Critical rules:
+- Reuse existing classes before creating any new class.
+- If a new class is necessary, it must live in the owning component or page CSS file.
+- Do not create new shared/global utility classes for one-off styling.
+- Do not use inline style props for visual design.
+- Use CSS Grid only.
+- No Flexbox.
+- Use the canonical grid system: grid.css in HOUSE_CSS (per PATHS.txt).
+- Use tokens: theme.css in HOUSE_CSS.
+- Use atoms from ATOMS before custom CSS.
+- Guard defs with ?: when values are not guaranteed.
+- All state and routing goes through the house useURL hook (HOOKS in PATHS.txt).
+- Do not invent props, tokens, handlers, or layout patterns that are not already in the house system.
+- If it does not fit the repo system, ask for a new approved house entry instead of inventing custom behavior.
+- Do not generic-stamp patterns from memory. Match the actual project rules.
+
+Rules against drift:
+- no random helper CSS
+- no shared global class workaround
+- no inline style forcing a look
+- no custom tokens without approval
+- no ad hoc layout hacks
+- no generic AI boilerplate that ignores the repo design system
+
+Project source of truth (all locations per PATHS.txt):
+- PATHS.txt at the project root - the location registry, read it first
+- GLOBAL_TYPES - the house vocabulary
+- HOUSE_CSS - grid.css and theme.css
+- ATOMS - the atom library
+- RULES_AND_SKILLS - this docs library
+
+Treat the project's house rules as the actual implementation contract. The AI should not improvise around them.
