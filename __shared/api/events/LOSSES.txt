@@ -1,0 +1,10 @@
+== LOSSES -- events ==
+Scars: what broke here, and the rule that stops it next time. Append only.
+
+(none yet)
+
+WATCH FOR:
+  - a mutating api that forgets bump() -- the write lands and no screen updates.
+    Symptom: "my changes don't show until i refresh". Check the api wrote bump().
+  - a page that opens EventSource and never closes it on unmount -- one leaked
+    server thread per mount.

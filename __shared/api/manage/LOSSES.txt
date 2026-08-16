@@ -1,0 +1,12 @@
+== LOSSES -- manage ==
+Scars: what broke here, and the rule that stops it next time. Append only.
+
+2026-07-25 -- restore() took ow_id but a json caller naturally sends id, so
+  POST /api/manage/restore {"table":"messages","id":2} died with
+  "restore() got an unexpected keyword argument 'id'".
+  RULE: an api's argument names ARE its contract. Accept the name the caller
+  would naturally send, or the endpoint is right and unusable.
+
+WATCH FOR:
+  - NEVER back up base.db with a file copy. It is WAL; use the sqlite backup api
+    (what backup() does). A copied WAL db can be silently torn.

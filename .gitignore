@@ -1,2 +1,10 @@
 node_modules/
 .claude/
+
+# python
+__pycache__/
+*.pyc
+
+# sqlite working files -- the db itself is tracked, these are not
+*.db-wal
+*.db-shm

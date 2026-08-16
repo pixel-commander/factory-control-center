@@ -1,0 +1,10 @@
+== LOSSES -- tables ==
+Scars: what broke here, and the rule that stops it next time. Append only.
+
+(none yet)
+
+WATCH FOR:
+  - posting to /api/messages without origin returns 400. That is the GUARD
+    working, not a bug -- a message must say where it came from.
+  - DELETE never removes a row. If you expect a row to be gone from the file and
+    it is not, that is correct: it is deleted=1. See ../manage/trash.

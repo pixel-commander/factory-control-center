@@ -1,0 +1,10 @@
+
+==============================
+Folder Name: hexbase
+File: LOSSES.txt
+Hint: The scars. What broke, what it cost, and the rule that stops it again.
+      NEVER delete a line here -- a scar earns its words.
+==============================
+
+(no scars yet -- this api was born 2026-07-30, after the door's laws were
+already written. read ..\LOSSES.txt and ..\..\LOSSES.txt before touching it.)

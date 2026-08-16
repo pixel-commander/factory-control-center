@@ -1,0 +1,26 @@
+== LOSSES -- themes ==
+Scars: what broke here, and the rule that stops it next time. Append only.
+
+
+========================================================================
+THE CHECKER CAUGHT THE GENERATOR                              2026-07-26
+========================================================================
+The first ramp put danger_darker at oklch lightness 0.45 on dark themes. It
+looked right in a swatch strip and measured 2.25:1 against the surface -- a
+warning colour nobody could see.
+
+THE BAR WAS RIGHT AND THE MATHS WAS WRONG. The floor is 0.55 on dark now.
+
+THE RULE: WHEN A CHECK FAILS, FIX THE THING IT CHECKED. Lowering the bar to
+make a generator pass turns the checker into decoration, and the failure it
+was built to catch ships anyway.
+
+
+WATCH FOR:
+  - RAMPS BELONG IN OKLCH. Mixing toward white in sRGB shifts hue and kills
+    chroma -- a lightened blue comes back lilac and washed out.
+  - CLAMP AFTER CONVERTING BACK. A colour can be valid in oklch and outside
+    what a screen can show; a very saturated seed returns slightly tamer, and
+    that is the conversion being honest rather than a bug.
+  - PREVIEW MUST WRITE NOTHING. The form generates while you type; if preview
+    wrote a row, every keystroke would be a theme.
