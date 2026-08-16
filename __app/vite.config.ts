@@ -17,5 +17,15 @@ export default defineConfig({
     fs: {
       allow: ['..'],
     },
+    // THE DOOR TO THE DB. The api binds 127.0.0.1:3035 and stays closed to the
+    // network on purpose; the browser reaches it through here, same origin, so
+    // there is no cors and the db socket is never exposed.
+    //   python __shared/api/server.py
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3035',
+        changeOrigin: true,
+      },
+    },
   },
 })

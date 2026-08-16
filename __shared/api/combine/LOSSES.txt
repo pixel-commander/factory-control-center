@@ -1,0 +1,10 @@
+== LOSSES -- combine ==
+Scars: what broke here, and the rule that stops it next time. Append only.
+
+(none yet)
+
+WATCH FOR:
+  - chats.participants is a CSV of HANDLES, not ids. Joining it against user.id
+    silently returns nobody -- the call succeeds and the array is empty.
+  - query args arrive as STRINGS. chat_id="1" will not match a stored int 1
+    unless it is coerced (the router coerces numeric-looking args for you).

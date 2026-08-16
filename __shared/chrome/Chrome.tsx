@@ -9,6 +9,7 @@ import { Nav } from '../components/Nav/Nav'
 import { ChromeWrapper } from './components/ChromeWrapper/ChromeWrapper'
 
 import ComponentDemos from '../dashboards/ComponentDemos/ComponentDemos'
+import Appointments from '../dashboards/Appointments/Appointments'
 
 /**
  * questions to ask:
@@ -46,6 +47,11 @@ const NAV_ITEMS: ChromeNavItemProps[] = [{
     label: 'demos',
     path: 'demos',
     View: ComponentDemos,
+},{
+    id: 'appointments',
+    label: 'appointments',
+    path: 'appointments',
+    View: Appointments,
 },{
     id: 'floor',
     label: 'floor',

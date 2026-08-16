@@ -1,0 +1,12 @@
+==============================
+Folder Name: api/brain
+File: LOSSES.txt
+Hint: the scars specific to this door -- read before touching it
+==============================
+
+(none yet -- born 2026-08-02. Known risks to watch, priced in advance:
+  - the db rides an SMB share: if the server is off, every route 500s.
+    That is honest failure, not a bug -- do not add a cache here; the
+    dashboard says "brain unreachable" and that is the truth.
+  - sqlite over SMB is fine for ONE reader; never point a writer at it
+    from this side. The parser runs where the disk lives.)
