@@ -1,0 +1,36 @@
+:root {}
+
+/* base styles */
+.list-item-heavy {
+  display: block;
+  padding: var(--padding-sm) var(--padding-md);
+  border: var(--border-width-thick) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, var(--bg-container-raised), var(--bg-container-main));
+  box-shadow: var(--lift), var(--drop);
+  cursor: pointer;
+  min-width: 0;
+  transition: border-color .12s ease, filter .12s ease;
+}
+.list-item-heavy:hover {
+  border-color: rgb(var(--glow));
+  filter: brightness(1.1);
+}
+.list-item-heavy.is-selected {
+  border-color: rgb(var(--glow));
+  box-shadow: var(--lift), 0 0 .75rem rgba(var(--glow), .25);
+}
+
+/** alt style for container-atom, used for alternate appearance of the container */
+.list-item-heavy--alt {}
+.list-item-heavy--alt:hover {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.list-item-heavy.inset {
+  box-shadow: var(--sink);
+}
+
+/* styles for float appearance: dropshadow/glow effects */
+.list-item-heavy.float {
+  box-shadow: var(--drop-lg);
+}

@@ -1,0 +1,35 @@
+:root {}
+
+/* base styles */
+.list-item-ghost {
+  display: block;
+  padding: var(--padding-sm) var(--padding-md);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+  min-width: 0;
+  transition: border-color .12s ease, background .12s ease;
+}
+.list-item-ghost:hover {
+  border-color: var(--color-border-light);
+  background: rgba(255, 255, 255, .03);
+}
+.list-item-ghost.is-selected {
+  border-color: rgb(var(--glow));
+  background: rgba(var(--glow), .08);
+}
+
+/** alt style for container-atom, used for alternate appearance of the container */
+.list-item-ghost--alt {}
+.list-item-ghost--alt:hover {}
+
+/* styles for inset appearance:  innershadow/glow effects */
+.list-item-ghost.inset {
+  box-shadow: var(--well-inset);
+}
+
+/* styles for float appearance: dropshadow/glow effects */
+.list-item-ghost.float {
+  box-shadow: var(--drop);
+}

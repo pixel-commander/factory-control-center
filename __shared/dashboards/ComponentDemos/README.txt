@@ -19,3 +19,9 @@ The forms tab (added 2026-08-16 as "form widget", renamed same day):
   family demo.
 - New widget demos register in manifest.ts WIDGETS (name, id, Demo) -
   one line, same bargain as the other manifest arrays.
+
+The lists tab (added 2026-08-16) is the forms tab's twin: ListsDemos.tsx
+consumes the manifest's LISTS array, opens on the lists FAMILY demo
+(widgets\lists\demo - ListWidget scenarios plus the live domain lists as
+a one-open-at-a-time accordion), and the side nav lists ListWidget and
+each domain list individually on the same view segment.

@@ -1,40 +1,24 @@
 LISTWIDGET
 ==========
 
-The wrapper every list column wears - built clean from house parts, no
-v2 code carried over (owner's call: the v2 original needed a serious
-refactor, so this is the house's own answer to the same job).
+STRIPPED BARE, on the owner's word (2026-08-16, "lets see it without"):
+ListWidget currently renders ONLY the rows - a pass-through to
+RenderItems wearing the list-widget class. No section shell, no search
+line, no + button, no well.
 
-The parts, all reused:
+- items / Item / item_class / container_class / selected / handleClick
+  go straight to RenderItems: one element per item, key from id, the
+  house loop law.
+- ListWidgetProps still carries the full shell vocabulary (query,
+  has_search, can_add, action, is_open, name, handleChange,
+  handleToggle, handleClickAddNew) so the nine domain lists compile and
+  pass their words unchanged. Those words are INERT while the widget is
+  bare - a domain list's search state still filters its rows, but no
+  box renders to type in.
+- The full shell shape (details/summary browser-owned accordion, the
+  search line on StatelessInputGroup, the + on button-glow, the
+  container-well) lives in this branch's git history - restore any
+  layer from there when the owner calls it.
 
-- <details name>/<summary> IS the section: open/close is browser-owned,
-  and sections sharing a name are a native exclusive accordion - no
-  state, no js. is_open seeds the initial open through a ref (seeded
-  once, so React never fights the user's toggle); handleToggle reports
-  every move with the state it moved TO. To fully own open/close, remount
-  with a different is_open.
-- container-panel dresses the section, pad-sm the head, container-well +
-  scroll-y the rows well. grid with-header / side-r lay out the search
-  line: the field in main, the + in side (button-glow atom).
-- StatelessInputGroup is the search field. It reports the WORD through
-  handleChange (the house contract: the new value, not the event) and
-  FILTERS NOTHING - the items are the caller's, so the filtering is too.
-  query seeds the box; the box is uncontrolled after.
-- RenderItems draws the rows: one element per item, key from id,
-  item_class and selected per the house loop law, Item to override the
-  row. handleClick reports the item.
-- The + fires handleClickAddNew and nothing more - what a + means is
-  the caller's decision (the house convention is writing the shape's
-  url var as add-new). can_add=false removes the button,
-  has_search=false the whole line.
-
-Not built, on purpose:
-
-- Drag to reorder / drag to scroll: the house has no drag js yet;
-  can_reorder is the house word waiting for it. Owner calls that build.
-- Data loading: this is the dress + search + well. The domain lists
-  (ProjectsList and friends, when they port) own their db plug, same
-  split as the forms family.
-
-The demo filters demo-local sample items and reports selection and +
-presses as JSON - it writes nothing.
+The domain lists (TasksList and the other eight) are the pattern's
+instances; TasksList's README is the reference for that pattern.

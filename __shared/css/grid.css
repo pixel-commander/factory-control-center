@@ -1,33 +1,40 @@
 .grid {
   display: grid;
 }
-
+.pad { padding: .5rem; }
+.grid.gap { grid-gap: .3rem; }
 .grid.side-l {
   grid-template-columns: auto 1fr;
   grid-template-areas: "side main";
 }
 
+.pad-xs { padding: .1rem; }
 .grid.side-r {
   grid-template-columns: 1fr auto;
   grid-template-areas: "main side";
 }
 
+.grid.sides {
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "left main right";
+}
+
 .grid.with-header {
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "header"
     "main";
 }
 
 .grid.with-footer {
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: 1fr auto;
   grid-template-areas:
     "main"
     "footer";
 }
 
 .grid.with-header.with-footer {
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header"
     "main"
@@ -35,8 +42,8 @@
 }
 
 .grid.holy-grail {
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
   grid-template-areas:
     "header header header"
     "left main right"

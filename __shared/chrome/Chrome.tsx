@@ -10,6 +10,9 @@ import { ChromeWrapper } from './components/ChromeWrapper/ChromeWrapper'
 
 import ComponentDemos from '../dashboards/ComponentDemos/ComponentDemos'
 import Appointments from '../dashboards/Appointments/Appointments'
+import CommsCenter from '../dashboards/CommsCenter/CommsCenter'
+import Projects from '../dashboards/Projects/Projects'
+import Organizer from '../dashboards/Organizer/Organizer'
 
 /**
  * questions to ask:
@@ -52,6 +55,21 @@ const NAV_ITEMS: ChromeNavItemProps[] = [{
     label: 'appointments',
     path: 'appointments',
     View: Appointments,
+},{
+    id: 'comms-center',
+    label: 'comms center',
+    path: 'comms-center',
+    View: CommsCenter,
+},{
+    id: 'projects',
+    label: 'projects',
+    path: 'projects',
+    View: Projects,
+},{
+    id: 'organizer',
+    label: 'organizer',
+    path: 'organizer',
+    View: Organizer,
 },{
     id: 'floor',
     label: 'floor',
