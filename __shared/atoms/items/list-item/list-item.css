@@ -2,7 +2,10 @@
 
 /* base styles */
 .list-item {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: var(--padding-xs) var(--padding-sm);
   padding: var(--padding-sm) var(--padding-md);
   border: var(--border-width) solid var(--color-border-dark);
   border-radius: var(--radius-sm);
@@ -19,6 +22,38 @@
 .list-item.is-selected {
   border-color: rgb(var(--glow));
   box-shadow: inset 0 0 0 1px rgba(var(--glow), .35), 0 0 .75rem rgba(var(--glow), .12);
+}
+
+.list-item .name {
+  font-size: var(--text-base);
+  letter-spacing: .04em;
+  color: var(--color-text);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-item .title {
+  grid-column: 1 / -1;
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-item .mark {
+  font-size: var(--text-xs);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  justify-self: end;
+}
+
+.list-item.is-selected .mark {
+  color: var(--a-ink);
 }
 
 /** alt style for container-atom, used for alternate appearance of the container */

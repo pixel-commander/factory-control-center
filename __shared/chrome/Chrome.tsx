@@ -13,6 +13,7 @@ import Appointments from '../dashboards/Appointments/Appointments'
 import CommsCenter from '../dashboards/CommsCenter/CommsCenter'
 import Projects from '../dashboards/Projects/Projects'
 import Organizer from '../dashboards/Organizer/Organizer'
+import Classroom from '../dashboards/Classroom/Classroom'
 
 /**
  * questions to ask:
@@ -70,6 +71,11 @@ const NAV_ITEMS: ChromeNavItemProps[] = [{
     label: 'organizer',
     path: 'organizer',
     View: Organizer,
+},{
+    id: 'classroom',
+    label: 'classroom',
+    path: 'classroom',
+    View: Classroom,
 },{
     id: 'floor',
     label: 'floor',

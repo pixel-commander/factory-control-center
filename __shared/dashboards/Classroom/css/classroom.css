@@ -1,0 +1,51 @@
+.classroom {
+  gap: var(--padding);
+  min-height: 0;
+  min-width: 0;
+}
+
+.classroom-head {
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: var(--padding);
+}
+
+.classroom-title {
+  font-size: var(--text-md);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-text-strong);
+}
+
+.classroom-body {
+  gap: var(--padding);
+  min-height: 0;
+  min-width: 0;
+}
+
+.classroom-rail {
+  grid-auto-rows: max-content;
+  align-content: start;
+  gap: var(--padding-lg);
+  width: 16rem;
+  min-height: 0;
+}
+
+.classroom-main {
+  grid-template-rows: minmax(0, 1fr);
+  min-height: 0;
+  min-width: 0;
+}
+
+.classroom-review {
+  grid-template-rows: max-content minmax(0, 1fr);
+  gap: var(--padding-lg);
+  align-content: start;
+  min-height: 0;
+}
+
+.classroom-review-body {
+  gap: var(--padding);
+  min-height: 0;
+  min-width: 0;
+}

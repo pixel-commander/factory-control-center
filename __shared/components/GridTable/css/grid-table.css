@@ -1,0 +1,62 @@
+.grid-table {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  min-height: 0;
+  min-width: 0;
+}
+
+.grid-table-grid {
+  display: grid;
+  align-content: start;
+  min-height: 0;
+  min-width: 0;
+}
+
+.grid-table-row {
+  display: contents;
+}
+
+.grid-table-label {
+  padding: var(--padding-xs) var(--padding-sm);
+  border-bottom: var(--border-width) solid var(--color-border-dark);
+  font-size: var(--text-xs);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grid-table-cell {
+  padding: var(--padding-xs) var(--padding-sm);
+  border-top: var(--border-width) solid transparent;
+  border-bottom: var(--border-width) solid transparent;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.grid-table-cell:hover {
+  background: var(--bg-container-main);
+}
+
+.grid-table-row.is-selected .grid-table-cell {
+  border-top-color: rgba(var(--a), .6);
+  border-bottom-color: rgba(var(--a), .6);
+  background: rgba(var(--a), .07);
+  color: var(--a-ink);
+}
+
+.grid-table-empty {
+  grid-column: 1 / -1;
+  padding: var(--padding);
+  font-size: var(--text-xs);
+  letter-spacing: .18em;
+  color: var(--color-text-dim);
+}

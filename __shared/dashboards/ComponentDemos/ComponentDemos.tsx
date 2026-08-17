@@ -15,6 +15,10 @@ import StatelessFormDemo from '@components/StatelessForm/demo/Demo'
 import CalendarDemo from '@components/Calendar/demo/Demo'
 import RenderItemsDemo from '@components/RenderItems/demo/Demo'
 import IdeDemo from '@components/Ide/demo/Demo'
+import SectionDemo from '@components/Section/demo/Demo'
+import SliderDemo from '@components/Slider/demo/Demo'
+import GridTableDemo from '@components/GridTable/demo/Demo'
+import StatCellDemo from '@components/StatCell/demo/Demo'
 
 /**
  * questions to ask:
@@ -73,6 +77,22 @@ const TABS = [{
   id: 'lists',
   label: 'lists',
   path: 'lists'
+},{
+  id: 'section',
+  label: 'Section',
+  path: 'section'
+},{
+  id: 'slider',
+  label: 'Slider',
+  path: 'slider'
+},{
+  id: 'grid-table',
+  label: 'GridTable',
+  path: 'grid-table'
+},{
+  id: 'stat-cell',
+  label: 'StatCell',
+  path: 'stat-cell'
 }]
 
 // TabsNav OWNS THE URL; Nav just draws. It reads its own segment (`page`) and
@@ -118,6 +138,10 @@ const DEMOS: Record<string, () => React.JSX.Element> = {
   calendar: CalendarDemo,
   'render-items': RenderItemsDemo,
   ide: IdeDemo,
+  section: SectionDemo,
+  slider: SliderDemo,
+  'grid-table': GridTableDemo,
+  'stat-cell': StatCellDemo,
   forms: FormWidgetDemos,
   lists: ListsDemos
 }
