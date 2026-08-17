@@ -51,6 +51,19 @@ export const StatelessInputGroup = ({
     return props?.handleBlur?.(e, props)
   }
 
+  const collectChecks = () => {
+    const container_el = container_ref?.current
+    if (!container_el) return
+
+    const holder_el = container_el.querySelector(`input[type='hidden']`) as HTMLInputElement
+    if (!holder_el) return
+
+    const boxes = container_el.querySelectorAll<HTMLInputElement>(`input[type='checkbox']`)
+    const checked_ids: string[] = []
+    boxes.forEach((box: HTMLInputElement) => { if (box.checked) checked_ids.push(box.value) })
+    holder_el.value = checked_ids.join(',')
+  }
+
   const input_settings: {
     defaultValue?: string | number;
     tabIndex?: number;
@@ -88,10 +101,38 @@ export const StatelessInputGroup = ({
   if (type === 'select') InputToUse =
     <select {...field_settings} defaultValue={default_value}>
       <option value=''>Select</option>
-      {props?.options?.map((option: string, i: number) => {
-        return <option key={option || i} value={option}>{option || 'n/a'}</option>
-      })}
+      {props?.items
+        ? props.items.map((item, i) => {
+            return <option key={item.id || i} value={item.id}>{item.name || 'n/a'}</option>
+          })
+        : props?.options?.map((option: string, i: number) => {
+            return <option key={option || i} value={option}>{option || 'n/a'}</option>
+          })}
     </select>
+
+  const list_items = props?.items || props?.options?.map(option => ({ id: option, name: option })) || []
+
+  if (type === 'check_list') {
+    const checked_ids = `${default_value || value || ''}`.split(',').map(entry => entry.trim()).filter(Boolean)
+    InputToUse =
+      <div>
+        <input type='hidden' id={id || name} name={name} defaultValue={`${default_value || value || ''}`} />
+        {list_items.map((item, i) =>
+          <label key={item.id || i}>
+            <input type='checkbox' value={item.id} tabIndex={tab_index} defaultChecked={checked_ids.includes(item.id)} onChange={collectChecks} />
+            {item.name || 'n/a'}
+          </label>)}
+      </div>
+  }
+
+  if (type === 'radio_list') InputToUse =
+    <div>
+      {list_items.map((item, i) =>
+        <label key={item.id || i}>
+          <input type='radio' name={name} value={item.id} tabIndex={tab_index} defaultChecked={`${default_value || value || ''}` === item.id} />
+          {item.name || 'n/a'}
+        </label>)}
+    </div>
 
   const LabelComponent = () => {
     if (Label) return <Label data-id='form-group-label' className='input-group-label' htmlFor={name} {...props} />

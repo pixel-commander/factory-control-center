@@ -1,15 +1,16 @@
 import './css/component-demos.css'
 import type { ComponentDemosProps } from './ComponentDemos.types'
-import {GridCell} from '../../components/GridCell/GridCell'
-import {Nav} from '../../components/Nav/Nav'
-import type { NavProps } from '../../components/Nav/Nav.types'
+import {GridCell} from '@components/GridCell/GridCell'
+import {Nav} from '@components/Nav/Nav'
+import type { NavProps } from '@components/Nav/Nav.types'
 import { useURL } from '../../hooks/useURL/useURL'
 import { ButtonDemos } from './ButtonDemos'
 import { ContainerDemos } from './ContainerDemos'
-import StatelessFormDemo from '../../components/StatelessForm/demo/Demo'
-import CalendarDemo from '../../components/Calendar/demo/Demo'
-import RenderItemsDemo from '../../components/RenderItems/demo/Demo'
-import IdeDemo from '../../components/Ide/demo/Demo'
+import { FormWidgetDemos } from './FormWidgetDemos'
+import StatelessFormDemo from '@components/StatelessForm/demo/Demo'
+import CalendarDemo from '@components/Calendar/demo/Demo'
+import RenderItemsDemo from '@components/RenderItems/demo/Demo'
+import IdeDemo from '@components/Ide/demo/Demo'
 
 /**
  * questions to ask:
@@ -48,6 +49,10 @@ const TABS = [{
   id: 'ide',
   label: 'ide',
   path: 'ide'
+},{
+  id: 'forms',
+  label: 'forms',
+  path: 'forms'
 }]
 
 // TabsNav OWNS THE URL; Nav just draws. It reads its own segment (`page`) and
@@ -89,7 +94,8 @@ const DEMOS: Record<string, () => React.JSX.Element> = {
   'stateless-form': StatelessFormDemo,
   calendar: CalendarDemo,
   'render-items': RenderItemsDemo,
-  ide: IdeDemo
+  ide: IdeDemo,
+  forms: FormWidgetDemos
 }
 
 const Main = () => {

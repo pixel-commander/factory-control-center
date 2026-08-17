@@ -1,0 +1,7 @@
+.list-widget {
+  gap: var(--padding-sm);
+}
+
+.list-widget-well {
+  min-height: 0;
+}

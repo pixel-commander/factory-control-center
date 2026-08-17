@@ -12,6 +12,7 @@ export interface InputGroupBaseProps {
   value?: string | number;
   default_value?: string | number;
   options?: string[];
+  items?: { id: string; name: string }[];
   [key: string]: unknown;
   validate?: (x?: string | number) => ReactNode;
   spacer?: 'string';

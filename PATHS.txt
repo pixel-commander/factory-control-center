@@ -25,6 +25,10 @@ DASHBOARDS: [PROJECT_ROOT]\__shared\dashboards
 # The dashboards live here. This is the landing path for the new
 # dashboard stamp.
 
+WIDGETS: [PROJECT_ROOT]\__shared\widgets
+# The widgets live here. A widget is a component plugged into the db so
+# it can be dropped into place without changing many settings.
+
 ATOMS: [PROJECT_ROOT]\__shared\atoms
 # The atoms live here. This is the landing path for the new atom stamp.
 
