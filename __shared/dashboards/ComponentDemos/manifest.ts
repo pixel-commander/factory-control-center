@@ -28,6 +28,12 @@ import ButtonOutlined from '@atoms/buttons/button-outlined/demo/Demo'
 import SiteNavButton from '@atoms/buttons/site-nav-button/demo/Demo'
 import TabNavButton from '@atoms/buttons/tab-nav-button/demo/Demo'
 
+import ListItem from '@atoms/items/list-item/demo/Demo'
+import ListItemHeavy from '@atoms/items/list-item-heavy/demo/Demo'
+import ListItemGhost from '@atoms/items/list-item-ghost/demo/Demo'
+import Chip from '@atoms/chips/chip/demo/Demo'
+import Fx from '@atoms/effects/fx/demo/Demo'
+
 import StatelessForm from '@components/StatelessForm/demo/Demo'
 import Ide from '@components/Ide/demo/Demo'
 
@@ -41,6 +47,16 @@ import ContactForm from '../../widgets/forms/ContactForm/demo/Demo'
 import CourseForm from '../../widgets/forms/CourseForm/demo/Demo'
 import UserForm from '../../widgets/forms/UserForm/demo/Demo'
 import ListWidget from '../../widgets/lists/ListWidget/demo/Demo'
+import AppointmentsList from '../../widgets/lists/AppointmentsList/demo/Demo'
+import ProjectsList from '../../widgets/lists/ProjectsList/demo/Demo'
+import TasksList from '../../widgets/lists/TasksList/demo/Demo'
+import TodosList from '../../widgets/lists/TodosList/demo/Demo'
+import AssignmentsList from '../../widgets/lists/AssignmentsList/demo/Demo'
+import ClassroomsList from '../../widgets/lists/ClassroomsList/demo/Demo'
+import ContactsList from '../../widgets/lists/ContactsList/demo/Demo'
+import CoursesList from '../../widgets/lists/CoursesList/demo/Demo'
+import UsersList from '../../widgets/lists/UsersList/demo/Demo'
+import ListsFamily from '../../widgets/lists/demo/Demo'
 
 export interface DemoProps {
     name?: string,
@@ -106,6 +122,22 @@ export const ATOMS: DemoProps[] = [{
     name: 'tab-nav-button', id: 'tab-nav-button', Demo: TabNavButton
 }]
 
+export const ITEMS: DemoProps[] = [{
+    name: 'list-item', id: 'list-item', Demo: ListItem
+},{
+    name: 'list-item-heavy', id: 'list-item-heavy', Demo: ListItemHeavy
+},{
+    name: 'list-item-ghost', id: 'list-item-ghost', Demo: ListItemGhost
+}]
+
+export const CHIPS: DemoProps[] = [{
+    name: 'chip', id: 'chip', Demo: Chip
+}]
+
+export const EFFECTS: DemoProps[] = [{
+    name: 'fx', id: 'fx', Demo: Fx
+}]
+
 export const COMPONENTS: DemoProps[] = [{
     name: 'StatelessForm', id: 'stateless-form', Demo: StatelessForm
 },{
@@ -130,6 +162,28 @@ export const WIDGETS: DemoProps[] = [{
     name: 'CourseForm', id: 'course-form', Demo: CourseForm
 },{
     name: 'UserForm', id: 'user-form', Demo: UserForm
+}]
+
+export const LISTS: DemoProps[] = [{
+    name: 'lists', id: 'lists', Demo: ListsFamily
 },{
     name: 'ListWidget', id: 'list-widget', Demo: ListWidget
+},{
+    name: 'AppointmentsList', id: 'appointments-list', Demo: AppointmentsList
+},{
+    name: 'ProjectsList', id: 'projects-list', Demo: ProjectsList
+},{
+    name: 'TasksList', id: 'tasks-list', Demo: TasksList
+},{
+    name: 'TodosList', id: 'todos-list', Demo: TodosList
+},{
+    name: 'AssignmentsList', id: 'assignments-list', Demo: AssignmentsList
+},{
+    name: 'ClassroomsList', id: 'classrooms-list', Demo: ClassroomsList
+},{
+    name: 'ContactsList', id: 'contacts-list', Demo: ContactsList
+},{
+    name: 'CoursesList', id: 'courses-list', Demo: CoursesList
+},{
+    name: 'UsersList', id: 'users-list', Demo: UsersList
 }]

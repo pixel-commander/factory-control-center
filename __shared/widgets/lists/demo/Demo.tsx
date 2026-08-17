@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import ListWidget from '../ListWidget/ListWidget'
+import AppointmentsList from '../AppointmentsList/AppointmentsList'
+import ProjectsList from '../ProjectsList/ProjectsList'
+import TasksList from '../TasksList/TasksList'
+import TodosList from '../TodosList/TodosList'
 import { GridCell } from '../../../components/GridCell/GridCell'
 import type { RenderItemProps } from '../../../components/RenderItems/RenderItems.types'
 
@@ -16,6 +20,7 @@ export const Demo = () => {
   const [word, setWord] = useState('')
   const [searched, setSearched] = useState<string>()
   const [add_presses, setAddPresses] = useState(0)
+  const [row, setRow] = useState<RenderItemProps>()
 
   const shown = DEMO_ITEMS.filter((item) =>
     String(item.label).toLowerCase().includes(word.toLowerCase())
@@ -39,6 +44,15 @@ export const Demo = () => {
     handleClick: (item?: RenderItemProps) => setSearched(String(item?.id ?? '')),
     handleClickAddNew: () => setAddPresses((count) => count + 1),
   }
+
+  const live_settings = {
+    name: 'live-lists',
+    is_open: false,
+    selected: String(row?.id ?? ''),
+    handleClick: (item?: RenderItemProps) => setRow(item),
+  }
+
+  const first_settings = { ...live_settings, is_open: true }
 
   return (
     <div className='grid'>
@@ -64,6 +78,22 @@ export const Demo = () => {
           </GridCell>
           <GridCell area='main'>
             {JSON.stringify({ word, searched, add_presses })}
+          </GridCell>
+        </GridCell>
+        <GridCell area='footer'>v1</GridCell>
+      </div>
+
+      <div className='grid with-header with-footer'>
+        <GridCell area='header'>The domain lists -- live from the db, one open at a time</GridCell>
+        <GridCell area='main' className='side-l'>
+          <GridCell area='side'>
+            <AppointmentsList {...first_settings} />
+            <ProjectsList {...live_settings} />
+            <TasksList {...live_settings} />
+            <TodosList {...live_settings} />
+          </GridCell>
+          <GridCell area='main'>
+            {JSON.stringify(row)}
           </GridCell>
         </GridCell>
         <GridCell area='footer'>v1</GridCell>

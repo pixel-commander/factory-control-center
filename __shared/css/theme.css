@@ -14,6 +14,12 @@
   --bg-container-raised: #132433;
   --bg-container-soft: #183949;
   --bg-container-deep: #0a141b;
+  --bg-container-well: #081019;
+  --bg-container-hard: #05090f;
+  --bg-deepest: color-mix(in srgb, var(--bg-main) 85%, #000);
+
+  --glow: 73, 214, 255;
+  --glow-ink: var(--color-primary-lightest);
 
   --color-border: #294055;
   --color-border-light: #3b566d;
@@ -69,8 +75,17 @@
   --well-inset: inset 0 2px 4px rgba(0, 0, 0, .5);
 
   --radius-xs: 0.125rem;
+  --radius-sm: 0.1875rem;
+  --radius-base: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-pill: 999px;
+
+  --scroll-size: 10px;
+  --scroll-inset: 2px;
+  --scroll-margin: 4px;
+  --scroll-thumb: var(--color-border-light);
+  --scroll-thumb-hover: var(--color-border-lighter);
+  --scroll-track: transparent;
 
   --font-body: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
 

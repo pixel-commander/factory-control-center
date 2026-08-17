@@ -6,7 +6,11 @@ import type { NavProps } from '@components/Nav/Nav.types'
 import { useURL } from '../../hooks/useURL/useURL'
 import { ButtonDemos } from './ButtonDemos'
 import { ContainerDemos } from './ContainerDemos'
+import { ItemDemos } from './ItemDemos'
+import { ChipDemos } from './ChipDemos'
+import { EffectDemos } from './EffectDemos'
 import { FormWidgetDemos } from './FormWidgetDemos'
+import { ListsDemos } from './ListsDemos'
 import StatelessFormDemo from '@components/StatelessForm/demo/Demo'
 import CalendarDemo from '@components/Calendar/demo/Demo'
 import RenderItemsDemo from '@components/RenderItems/demo/Demo'
@@ -34,6 +38,18 @@ const TABS = [{
   label: 'buttons',
   path: 'buttons'
 },{
+  id: 'items',
+  label: 'items',
+  path: 'items'
+},{
+  id: 'chips',
+  label: 'chips',
+  path: 'chips'
+},{
+  id: 'effects',
+  label: 'effects',
+  path: 'effects'
+},{
   id: 'stateless-form',
   label: 'stateless form',
   path: 'stateless-form'
@@ -53,6 +69,10 @@ const TABS = [{
   id: 'forms',
   label: 'forms',
   path: 'forms'
+},{
+  id: 'lists',
+  label: 'lists',
+  path: 'lists'
 }]
 
 // TabsNav OWNS THE URL; Nav just draws. It reads its own segment (`page`) and
@@ -91,11 +111,15 @@ export const Side = ({
 const DEMOS: Record<string, () => React.JSX.Element> = {
   buttons: ButtonDemos,
   containers: ContainerDemos,
+  items: ItemDemos,
+  chips: ChipDemos,
+  effects: EffectDemos,
   'stateless-form': StatelessFormDemo,
   calendar: CalendarDemo,
   'render-items': RenderItemsDemo,
   ide: IdeDemo,
-  forms: FormWidgetDemos
+  forms: FormWidgetDemos,
+  lists: ListsDemos
 }
 
 const Main = () => {

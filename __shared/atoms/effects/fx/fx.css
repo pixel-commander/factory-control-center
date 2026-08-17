@@ -1,0 +1,132 @@
+:root {}
+
+/* base styles */
+.fx-scanlines {
+  position: relative;
+  overflow: hidden;
+}
+.fx-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .22) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+
+.fx-grid {
+  position: relative;
+  overflow: hidden;
+}
+.fx-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(90deg, rgba(160, 180, 255, .05) 0 1px, transparent 1px 1.25rem),
+    repeating-linear-gradient(0deg, rgba(160, 180, 255, .05) 0 1px, transparent 1px 1.25rem);
+}
+
+.fx-ribbed {
+  position: relative;
+  overflow: hidden;
+}
+.fx-ribbed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .035) 0 2px, transparent 2px 9px);
+}
+
+.fx-vignette {
+  position: relative;
+  overflow: hidden;
+}
+.fx-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 2rem rgba(0, 0, 0, .75);
+}
+
+.fx-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.fx-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, .09) 50%, transparent 58%);
+  background-size: 250% 100%;
+  animation: fx-sheen 3.5s linear infinite;
+}
+@keyframes fx-sheen {
+  0% { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.fx-glow-pulse {
+  border: var(--border-width) solid rgba(var(--glow), .7);
+  box-shadow: 0 0 1.1rem rgba(var(--glow), .45), inset 0 0 .8rem rgba(var(--glow), .08);
+  animation: fx-glow-pulse 2.6s ease-in-out infinite;
+}
+@keyframes fx-glow-pulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.28); }
+}
+
+.fx-flicker {
+  animation: fx-flicker 4s linear infinite;
+}
+@keyframes fx-flicker {
+  0%, 88%, 100% { opacity: 1; }
+  89% { opacity: .55; }
+  90% { opacity: 1; }
+  93% { opacity: .75; }
+  94% { opacity: 1; }
+  97% { opacity: .85; }
+  98% { opacity: 1; }
+}
+
+.fx-blink {
+  animation: fx-blink 2s infinite;
+}
+@keyframes fx-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .2; }
+}
+
+.fx-corner-ticks {
+  position: relative;
+}
+.fx-corner-ticks::before {
+  content: "";
+  position: absolute;
+  inset: .25rem;
+  pointer-events: none;
+  background:
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) left top / .625rem 2px,
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) left top / 2px .625rem,
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) right top / .625rem 2px,
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) right top / 2px .625rem,
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) left bottom / .625rem 2px,
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) left bottom / 2px .625rem,
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) right bottom / .625rem 2px,
+    linear-gradient(rgb(var(--glow)), rgb(var(--glow))) right bottom / 2px .625rem;
+  background-repeat: no-repeat;
+  opacity: .8;
+}
+
+/** alt style for container-atom, used for alternate appearance of the container */
+.fx--alt {}
+.fx--alt:hover {}
