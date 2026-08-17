@@ -10,15 +10,16 @@ import type { GridCellProps } from './GridCell.types'
  * 3. is there a container_class for this grid-cell?
  **/
 
-export const GridCell = ({ 
+export const GridCell = ({
   className,
   area,
   has_padding,
+  can_scroll,
   children,
   container_ref,
   cell_class = 'grid-cell-main'
  }: GridCellProps) => {
-  className=`grid-cell ${cell_class || ''} ${className || ''}`.trim()
+  className=`grid-cell ${cell_class || ''} ${can_scroll ? 'scroll-y' : ''} ${className || ''}`.trim()
 
   const cell_settings = {
     className: className,

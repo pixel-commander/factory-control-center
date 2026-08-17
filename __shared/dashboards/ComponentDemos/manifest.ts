@@ -1,35 +1,46 @@
 import type { ComponentType } from 'react'
 
-import ContainerMain from '../../atoms/containers/container-main/demo/Demo'
-import ContainerLight from '../../atoms/containers/container-light/demo/Demo'
-import ContainerDark from '../../atoms/containers/container-dark/demo/Demo'
-import ContainerNeg from '../../atoms/containers/container-neg/demo/Demo'
-import ContainerCell from '../../atoms/containers/container-cell/demo/Demo'
-import ContainerHeavy from '../../atoms/containers/container-heavy/demo/Demo'
-import ContainerPanel from '../../atoms/containers/container-panel/demo/Demo'
-import ContainerMetal from '../../atoms/containers/container-metal/demo/Demo'
-import ContainerGhost from '../../atoms/containers/container-ghost/demo/Demo'
-import ContainerBlueprint from '../../atoms/containers/container-blueprint/demo/Demo'
-import ContainerGrid from '../../atoms/containers/container-grid/demo/Demo'
-import ContainerOutline from '../../atoms/containers/container-outline/demo/Demo'
-import ContainerEdge from '../../atoms/containers/container-edge/demo/Demo'
-import ContainerWell from '../../atoms/containers/container-well/demo/Demo'
-import SiteNav from '../../atoms/containers/site-nav/demo/Demo'
-import TabNav from '../../atoms/containers/tab-nav/demo/Demo'
+import ContainerMain from '@atoms/containers/container-main/demo/Demo'
+import ContainerLight from '@atoms/containers/container-light/demo/Demo'
+import ContainerDark from '@atoms/containers/container-dark/demo/Demo'
+import ContainerNeg from '@atoms/containers/container-neg/demo/Demo'
+import ContainerCell from '@atoms/containers/container-cell/demo/Demo'
+import ContainerHeavy from '@atoms/containers/container-heavy/demo/Demo'
+import ContainerPanel from '@atoms/containers/container-panel/demo/Demo'
+import ContainerMetal from '@atoms/containers/container-metal/demo/Demo'
+import ContainerGhost from '@atoms/containers/container-ghost/demo/Demo'
+import ContainerBlueprint from '@atoms/containers/container-blueprint/demo/Demo'
+import ContainerGrid from '@atoms/containers/container-grid/demo/Demo'
+import ContainerOutline from '@atoms/containers/container-outline/demo/Demo'
+import ContainerEdge from '@atoms/containers/container-edge/demo/Demo'
+import ContainerWell from '@atoms/containers/container-well/demo/Demo'
+import SiteNav from '@atoms/containers/site-nav/demo/Demo'
+import TabNav from '@atoms/containers/tab-nav/demo/Demo'
 
-import ButtonSolid from '../../atoms/buttons/button-solid/demo/Demo'
-import ButtonGlow from '../../atoms/buttons/button-glow/demo/Demo'
-import ButtonGhost from '../../atoms/buttons/button-ghost/demo/Demo'
-import ButtonConsole from '../../atoms/buttons/button-console/demo/Demo'
-import ButtonUnderline from '../../atoms/buttons/button-underline/demo/Demo'
-import ButtonAngled from '../../atoms/buttons/button-angled/demo/Demo'
-import ButtonIcon from '../../atoms/buttons/button-icon/demo/Demo'
-import ButtonOutlined from '../../atoms/buttons/button-outlined/demo/Demo'
-import SiteNavButton from '../../atoms/buttons/site-nav-button/demo/Demo'
-import TabNavButton from '../../atoms/buttons/tab-nav-button/demo/Demo'
+import ButtonSolid from '@atoms/buttons/button-solid/demo/Demo'
+import ButtonGlow from '@atoms/buttons/button-glow/demo/Demo'
+import ButtonGhost from '@atoms/buttons/button-ghost/demo/Demo'
+import ButtonConsole from '@atoms/buttons/button-console/demo/Demo'
+import ButtonUnderline from '@atoms/buttons/button-underline/demo/Demo'
+import ButtonAngled from '@atoms/buttons/button-angled/demo/Demo'
+import ButtonIcon from '@atoms/buttons/button-icon/demo/Demo'
+import ButtonOutlined from '@atoms/buttons/button-outlined/demo/Demo'
+import SiteNavButton from '@atoms/buttons/site-nav-button/demo/Demo'
+import TabNavButton from '@atoms/buttons/tab-nav-button/demo/Demo'
 
-import StatelessForm from '../../components/StatelessForm/demo/Demo'
-import Ide from '../../components/Ide/demo/Demo'
+import StatelessForm from '@components/StatelessForm/demo/Demo'
+import Ide from '@components/Ide/demo/Demo'
+
+import AppointmentForm from '../../widgets/forms/AppointmentForm/demo/Demo'
+import ProjectForm from '../../widgets/forms/ProjectForm/demo/Demo'
+import TaskForm from '../../widgets/forms/TaskForm/demo/Demo'
+import TodoForm from '../../widgets/forms/TodoForm/demo/Demo'
+import AssignmentForm from '../../widgets/forms/AssignmentForm/demo/Demo'
+import ClassroomForm from '../../widgets/forms/ClassroomForm/demo/Demo'
+import ContactForm from '../../widgets/forms/ContactForm/demo/Demo'
+import CourseForm from '../../widgets/forms/CourseForm/demo/Demo'
+import UserForm from '../../widgets/forms/UserForm/demo/Demo'
+import ListWidget from '../../widgets/lists/ListWidget/demo/Demo'
 
 export interface DemoProps {
     name?: string,
@@ -99,4 +110,26 @@ export const COMPONENTS: DemoProps[] = [{
     name: 'StatelessForm', id: 'stateless-form', Demo: StatelessForm
 },{
     name: 'Ide', id: 'ide', Demo: Ide
+}]
+
+export const WIDGETS: DemoProps[] = [{
+    name: 'AppointmentForm', id: 'appointment-form', Demo: AppointmentForm
+},{
+    name: 'ProjectForm', id: 'project-form', Demo: ProjectForm
+},{
+    name: 'TaskForm', id: 'task-form', Demo: TaskForm
+},{
+    name: 'TodoForm', id: 'todo-form', Demo: TodoForm
+},{
+    name: 'AssignmentForm', id: 'assignment-form', Demo: AssignmentForm
+},{
+    name: 'ClassroomForm', id: 'classroom-form', Demo: ClassroomForm
+},{
+    name: 'ContactForm', id: 'contact-form', Demo: ContactForm
+},{
+    name: 'CourseForm', id: 'course-form', Demo: CourseForm
+},{
+    name: 'UserForm', id: 'user-form', Demo: UserForm
+},{
+    name: 'ListWidget', id: 'list-widget', Demo: ListWidget
 }]
