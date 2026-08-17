@@ -1,6 +1,7 @@
 import { useApi } from '../../../hooks/useApi/useApi'
-import { dateOf } from '../../../components/Calendar/js/dated'
-import type { CalendarItemProps } from '../../../components/Calendar/Calendar.types'
+import { useURL } from '../../../hooks/useURL/useURL'
+import { dateOf, startOfDay } from '../../../components/Calendar/js/dated'
+import type { CalendarItemProps, CalendarView } from '../../../components/Calendar/Calendar.types'
 
 export interface AppointmentRowProps {
   id?: string,
@@ -24,10 +25,6 @@ export const toCalendarItems = (rows?: AppointmentRowProps[]): CalendarItemProps
   return rows.map(row => {
     const { id, title, name, start_date } = row || {}
 
-    // dateOf, NOT timeOf -- timeOf floors to midnight, and the day view lays
-    // appointments out in hour lanes. The db keeps most of these as epoch ms
-    // but at least one row is an ISO string ('2026-08-13T18:00'), which is
-    // exactly the case dateOf exists to absorb.
     const when = dateOf(start_date)
 
     return {
@@ -40,10 +37,33 @@ export const toCalendarItems = (rows?: AppointmentRowProps[]): CalendarItemProps
   })
 }
 
-export const useAppointments = () => {
+interface UseAppointmentsProps {
+  view?: CalendarView
+}
+
+export const useAppointments = ({ view }: UseAppointmentsProps = {}) => {
   const [rows, handleApi, status] = useApi<AppointmentRowProps[]>(APPOINTMENTS_PATH)
 
+  const [{ url_vars }, go] = useURL()
+
+  const { date, appt } = url_vars || {}
+
+  const selected_date = Number(date) || undefined
+  const selected_appointment = String(appt || '') || undefined
+
   const items = toCalendarItems(rows || [])
+
+  const held = rows?.find(x => String(x?.id) === String(selected_appointment))
+
+  const handleSelect = (x?: CalendarItemProps) => go('update-var', { date: String(x?.id || '') })
+
+  const handleSelectAppointment = (x?: CalendarItemProps) => {
+    const when = dateOf(x?.date)
+    go('update-var', {
+      date: when ? String(startOfDay(when).getTime()) : '',
+      appt: String(x?.id || '')
+    })
+  }
 
   const handleAdd = (x?: AppointmentRowProps) => handleApi('add-new', { ...x, origin: 'appointments-dashboard' })
   const handleEdit = (x?: AppointmentRowProps) => handleApi('edit', { ...x })
@@ -52,8 +72,14 @@ export const useAppointments = () => {
   return {
     rows: rows || [],
     items,
+    held,
     status,
+    view,
+    selected_date,
+    selected_appointment,
     handleApi,
+    handleSelect,
+    handleSelectAppointment,
     handleAdd,
     handleEdit,
     handleDelete

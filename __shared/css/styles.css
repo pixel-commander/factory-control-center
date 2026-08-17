@@ -56,6 +56,60 @@ input, button, textarea, select {
   }
 }
 
+.accent-primary {
+  --a: var(--color-primary-rgb);
+  --a-solid: var(--color-primary);
+  --a-lt: var(--color-primary-lighter);
+  --a-dk: var(--color-primary-darker);
+  --a-ink: var(--color-primary-lightest);
+  --a-on: var(--color-primary-darkest);
+}
+
+.accent-secondary {
+  --a: var(--color-secondary-rgb);
+  --a-solid: var(--color-secondary);
+  --a-lt: var(--color-secondary-lighter);
+  --a-dk: var(--color-secondary-darker);
+  --a-ink: var(--color-secondary-lightest);
+  --a-on: var(--color-secondary-darkest);
+}
+
+.accent-accent {
+  --a: var(--color-accent-rgb);
+  --a-solid: var(--color-accent);
+  --a-lt: var(--color-accent-lighter);
+  --a-dk: var(--color-accent-darker);
+  --a-ink: var(--color-accent-lightest);
+  --a-on: var(--color-accent-darkest);
+}
+
+.accent-success {
+  --a: var(--color-success-rgb);
+  --a-solid: var(--color-success);
+  --a-lt: var(--color-success-lighter);
+  --a-dk: var(--color-success-darker);
+  --a-ink: var(--color-success-lighter);
+  --a-on: var(--bg-main);
+}
+
+.accent-warning {
+  --a: var(--color-warning-rgb);
+  --a-solid: var(--color-warning);
+  --a-lt: var(--color-warning-lighter);
+  --a-dk: var(--color-warning-darker);
+  --a-ink: var(--color-warning-lighter);
+  --a-on: var(--bg-main);
+}
+
+.accent-error {
+  --a: var(--color-error-rgb);
+  --a-solid: var(--color-error);
+  --a-lt: var(--color-error-lighter);
+  --a-dk: var(--color-error-darker);
+  --a-ink: var(--color-error-lighter);
+  --a-on: var(--bg-main);
+}
+
 .scroll-area {
   overflow: auto;
   overscroll-behavior: contain;

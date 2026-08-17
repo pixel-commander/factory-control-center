@@ -1,23 +1,27 @@
-import { useState } from 'react'
 import { Calendar } from '../../components/Calendar/Calendar'
 import '../../components/Calendar/css/calendar-main.css'
 import { GridCell } from '../../components/GridCell/GridCell'
 import { useAppointments } from './hooks/useAppointments'
-import type { CalendarItemProps } from '../../components/Calendar/Calendar.types'
+import type { AppointmentsProps } from './Appointments.types'
 
-export const Appointments = () => {
-  const { items, status, rows } = useAppointments()
-  const [selected_date, setSelectedDate] = useState<number>()
-  const [selected_appointment, setSelectedAppointment] = useState<string | number>()
-
-  const held = rows?.find(x => String(x?.id) === String(selected_appointment))
+export const Appointments = ({ view }: AppointmentsProps) => {
+  const {
+    items,
+    held,
+    status,
+    selected_date,
+    selected_appointment,
+    handleSelect,
+    handleSelectAppointment
+  } = useAppointments({ view })
 
   const calendar_settings = {
     items,
+    view,
     selected_date,
     selected_appointment,
-    handleSelect: (x?: CalendarItemProps) => setSelectedDate(Number(x?.id) || undefined),
-    handleSelectAppointment: (x?: CalendarItemProps) => setSelectedAppointment(x?.id)
+    handleSelect,
+    handleSelectAppointment
   }
 
   let note = `${items?.length || 0} appointments`

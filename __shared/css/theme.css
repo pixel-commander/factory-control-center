@@ -49,22 +49,36 @@
   --color-text-dim: #6f8ea3;
 
   --color-primary: #49d6ff;
+  --color-primary-rgb: 73, 214, 255;
   --color-primary-lighter: #7be4ff;
   --color-primary-lightest: #c8f6ff;
   --color-primary-darker: #1d6f8a;
   --color-primary-darkest: #123b4d;
 
   --color-secondary: #7f8cff;
+  --color-secondary-rgb: 127, 140, 255;
   --color-secondary-lighter: #a6afff;
   --color-secondary-lightest: #dfe3ff;
   --color-secondary-darker: #4c56b6;
   --color-secondary-darkest: #2d3368;
 
   --color-accent: #34f5c5;
+  --color-accent-rgb: 52, 245, 197;
   --color-accent-lighter: #7df5db;
   --color-accent-lightest: #d1fff5;
   --color-accent-darker: #149372;
   --color-accent-darkest: #0c4c40;
+
+  --color-success-rgb: 63, 224, 138;
+  --color-warning-rgb: 255, 180, 90;
+  --color-error-rgb: 255, 95, 122;
+
+  --a: var(--color-primary-rgb);
+  --a-solid: var(--color-primary);
+  --a-lt: var(--color-primary-lighter);
+  --a-dk: var(--color-primary-darker);
+  --a-ink: var(--color-primary-lightest);
+  --a-on: var(--color-primary-darkest);
 
   --lift-soft: inset 0 1px 0 rgba(255, 255, 255, .04);
   --lift: inset 0 1px 0 rgba(255, 255, 255, .07);

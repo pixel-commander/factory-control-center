@@ -2,7 +2,7 @@
 # These are the only authoritative locations. If a location you need is not
 # listed here, stop and ask — never hunt for it or guess.
 
-PROJECT_ROOT: F:\factory-control-center
+PROJECT_ROOT: C:\factory-control-center
 
 QA_LOG: C:\code-qa\QA.txt
 # Every question asked of the user, plus their answer, gets appended here.
@@ -48,14 +48,19 @@ RULES_AND_SKILLS: [PROJECT_ROOT]\docs
 # Doc law: the only hardcoded path a doc may contain is the project
 # root; every other location is referenced by its PATHS.txt key.
 
+# THE STAMPS LIVE ON THE SERVER, not in this project and not on this machine.
+# F:\ is not mapped here, so everything below is UNAVAILABLE from C:. The entries
+# stay as the record of where they are - do not hunt for them, do not recreate
+# them here, and do not hand-write what a stamp would have made. Ask instead.
+
 COMPONENT_TEMPLATE: F:\__shared\templates\component
-# Default component scaffold template for new reusable UI pieces.
+# UNAVAILABLE from C:. Default component scaffold template for new reusable UI pieces.
 
 STAMP_NEW_COMPONENT: F:\__shared\automation\ui\stamp-new-component
-# The new component stamp.
+# UNAVAILABLE from C:. The new component stamp.
 
 STAMP_NEW_ATOM: F:\__shared\automation\ui\stamp-new-atom
-# The new atom stamp.
+# UNAVAILABLE from C:. The new atom stamp.
 
 STAMP_NEW_DASHBOARD: F:\__shared\automation\ui\stamp-new-dashboard
-# The new dashboard stamp.
+# UNAVAILABLE from C:. The new dashboard stamp.

@@ -121,7 +121,7 @@ export const Chrome = ({
         // site-nav, not tab-nav: the enclosed-well styling lives in
         // components/SiteNav/css/site-nav.css and it styles .nav-item itself, so
         // the items need no atom of their own.
-        container_class: 'site-nav',
+        container_class: 'site-nav enclosed',
         item_class: '',
         handleClick: (x?: { path?: string, id?: string }) => go('set-path', { main: x?.path || x?.id })
     }

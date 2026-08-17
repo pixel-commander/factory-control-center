@@ -1,9 +1,6 @@
 :root {}
 
 /* base styles */
-/* THE ENCLOSED TAB BAR -- a sunken well with the tabs sitting in it, so the nav
-   reads as one instrument rather than a row of loose buttons. Carried from
-   rab-dashboard-v2's TabBar, data-mode="enclosed", on our tokens. */
 .site-nav {
   display: grid;
   grid-auto-flow: column;
@@ -12,15 +9,8 @@
   gap: var(--padding-xs);
   overflow-x: auto;
   overflow-y: hidden;
-
-  padding: var(--padding-xs);
-  border-radius: var(--radius-lg);
-  border: var(--border-width) solid var(--color-border-dark);
-  background: var(--bg-container-deep);
-  box-shadow: inset 0 0 .875rem rgba(0, 0, 0, .7);
 }
 
-/* ONE TRACK, NEVER TWO LINES -- stacked only when asked, via is_vertical */
 .site-nav.is-vertical {
   grid-auto-flow: row;
   grid-auto-columns: auto;
@@ -29,9 +19,13 @@
   overflow-y: auto;
 }
 
+.site-nav.is-full {
+  grid-auto-columns: minmax(0, 1fr);
+}
+
 .site-nav .nav-item {
   padding: var(--padding-xs) var(--padding-lg);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-base);
   border: var(--border-width) solid transparent;
   font-size: var(--text-sm);
   letter-spacing: .22em;
@@ -43,20 +37,107 @@
 }
 
 .site-nav .nav-item:hover {
-  color: var(--color-text);
-}
-
-/* THE OPEN ONE LIGHTS UP -- a tinted fill, a matching edge, and a glow behind
-   the words, all off the one accent. */
-.site-nav .nav-item.is-selected {
-  border-color: color-mix(in srgb, var(--color-primary) 60%, transparent);
-  background: color-mix(in srgb, var(--color-primary) 7%, transparent);
-  color: var(--color-primary-lightest);
-  text-shadow: 0 0 .75rem color-mix(in srgb, var(--color-primary) 50%, transparent);
+  color: var(--color-text-strong);
 }
 
 .site-nav.is-vertical .nav-item {
   text-align: left;
+}
+
+.site-nav.is-small .nav-item {
+  padding: var(--padding-xs) var(--padding-sm);
+  font-size: var(--text-xs);
+}
+
+.site-nav.enclosed {
+  padding: var(--padding-xs);
+  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--color-border-dark);
+  background: var(--bg-container-deep);
+  box-shadow: inset 0 0 .875rem rgba(0, 0, 0, .7);
+}
+
+.site-nav.enclosed .nav-item.is-selected {
+  border-color: rgba(var(--a), .6);
+  background: rgba(var(--a), .07);
+  color: var(--a-ink);
+  text-shadow: 0 0 .75rem rgba(var(--a), .5);
+}
+
+.site-nav.underline {
+  gap: var(--padding-lg);
+  padding: 0 var(--padding-xs);
+  border-bottom: var(--border-width) solid var(--color-border-darker);
+}
+
+.site-nav.underline .nav-item {
+  border-radius: 0;
+}
+
+.site-nav.underline .nav-item.is-selected {
+  border-bottom: var(--border-width-thick) solid var(--a-solid);
+  color: var(--a-ink);
+  text-shadow: 0 0 .75rem rgba(var(--a), .6);
+  box-shadow: 0 .35rem .6rem -.35rem rgba(var(--a), .55);
+}
+
+.site-nav.console {
+  gap: var(--padding-xs);
+  padding: var(--padding-xs);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--bg-container-deep), var(--bg-container-hard));
+  box-shadow: inset 0 0 0 1px var(--color-border-darker), inset 0 2px .5rem #000;
+}
+
+.site-nav.console .nav-item {
+  border-color: var(--color-border);
+  background: linear-gradient(180deg, var(--bg-container-raised), var(--bg-container-main));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 2px 4px #000;
+  color: var(--color-muted);
+}
+
+.site-nav.console .nav-item.is-selected {
+  border-color: var(--bg-container-hard);
+  background: linear-gradient(180deg, #0b0e15, var(--bg-container-alt));
+  box-shadow: inset 0 2px .375rem #000, inset 0 0 .625rem rgba(var(--a), .15);
+  color: var(--a-ink);
+  text-shadow: 0 0 .625rem rgba(var(--a), .6);
+}
+
+.site-nav.angled {
+  gap: var(--padding-xs);
+}
+
+.site-nav.angled .nav-item {
+  border-radius: 0;
+  border: none;
+  padding: var(--padding-xs) var(--padding-lg);
+  clip-path: polygon(.75rem 0, 100% 0, calc(100% - .75rem) 100%, 0 100%);
+  background: linear-gradient(180deg, var(--bg-container-raised), var(--bg-container-alt));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07);
+}
+
+.site-nav.angled .nav-item.is-selected {
+  background: linear-gradient(180deg, rgba(var(--a), .25), rgba(var(--a), .08));
+  color: var(--a-ink);
+  text-shadow: 0 0 .625rem rgba(var(--a), .6);
+  box-shadow: inset 0 0 0 1px rgba(var(--a), .5);
+}
+
+.site-nav.solid {
+  padding: var(--padding-xs);
+  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--color-border-dark);
+  background: var(--bg-container-deep);
+  box-shadow: inset 0 0 .875rem rgba(0, 0, 0, .7);
+}
+
+.site-nav.solid .nav-item.is-selected {
+  border-color: var(--a-solid);
+  background: linear-gradient(180deg, var(--a-lt), var(--a-dk));
+  color: var(--a-on);
+  font-weight: 700;
+  box-shadow: 0 0 .75rem rgba(var(--a), .45), inset 0 1px 0 rgba(255, 255, 255, .35);
 }
 
 /** alt style for site-nav, used for alternate appearance of the site-nav */
